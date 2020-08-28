@@ -6,16 +6,20 @@ import { tabChangedAction } from '../store/tabs/tabs.actions';
 @Component({
   selector: 'instructions',
   templateUrl: './instructions.component.html',
-  styleUrls: ['./instructions.component.css']
+  styleUrls: ['./instructions.component.scss']
 })
 
-export class InstructionsComponent {
+export class InstructionsComponent implements OnInit {
   tab$: Observable<any>;
   selectedTab: string;
 
   constructor( private store: Store< {tab: any} > ) {
     this.tab$ = store.pipe( select('tab') );
   }
+
+  ngOnInit() {
+  }
+
   onChangeTab( event ) {
     this.store.dispatch( tabChangedAction({ selectedTab: event }) );
   }

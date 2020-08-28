@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -8,7 +8,8 @@ import { StoreModule } from '@ngrx/store';
 import { tabsReducer } from './store/tabs/tabs.reducer';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SubmitTabsComponent } from './submit-tabs/submit-tabs.component';
+import { TabsComponent } from './tabs/tabs.component';
+// import { WinnerAddComponent } from './winner-history/winner-add/add-winner.component';
 import { StatsTabsComponent } from './stats-tabs/stats-tabs.component';
 import { InstructionsComponent } from './instructions/instructions.component';
 import { Player1Component } from './player1/player1.component';
@@ -17,14 +18,20 @@ import { Player3Component } from './player3/player3.component';
 import { Player4Component } from './player4/player4.component';
 
 const appRoutes: Routes = [
-  { path: '', component: SubmitTabsComponent },
+  { path: '', component: TabsComponent },
   { path: 'instructions', component: InstructionsComponent },
-  { path: '**', component: SubmitTabsComponent }
+  { path: '',
+    redirectTo: '/counter',
+    pathMatch: 'full'
+  },
+  { path: '**', component: TabsComponent }
 ];
 
 
 @NgModule({
-  declarations: [AppComponent, SubmitTabsComponent, StatsTabsComponent, InstructionsComponent, Player1Component, Player2Component, Player3Component, Player4Component],
+  declarations: [AppComponent, TabsComponent, StatsTabsComponent, InstructionsComponent, Player1Component, Player2Component, Player3Component, Player4Component ],
+
+  // winnersAddComponent, WinnerAddComponent
   imports: [
     RouterModule.forRoot(
       appRoutes
@@ -38,7 +45,7 @@ const appRoutes: Routes = [
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: []
+  schemas: [NO_ERRORS_SCHEMA]
 })
 
 export class AppModule { }

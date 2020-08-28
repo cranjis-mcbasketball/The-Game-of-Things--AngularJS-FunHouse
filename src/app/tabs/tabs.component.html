@@ -1,0 +1,117 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom"
+>
+  <h1 class="h2">The Game of Things</h1>
+</div>
+
+<h2 class="text-center">
+  Selected tab: <span style="color: red">{{ (tab$ | async).selectedTab }}</span>
+</h2>
+<h5>Nav 1 (Parent)</h5>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="player1-tab"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="player1"
+      aria-selected="false"
+      [ngClass]="(tab$ | async).selectedTab === 'player1' ? ' show active' : ''"
+      (click)="onChangeTab('player1')"
+      >Player 1</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="player2-tab"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="player2"
+      aria-selected="false"
+      [ngClass]="(tab$ | async).selectedTab === 'player2' ? ' show active' : ''"
+      (click)="onChangeTab('player2')"
+      >Player 2</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="player3-tab"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="player3"
+      aria-selected="false"
+      [ngClass]="(tab$ | async).selectedTab === 'player3' ? ' show active' : ''"
+      (click)="onChangeTab('player3')"
+      >Player 3</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="player4-tab"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="player4"
+      aria-selected="false"
+      [ngClass]="(tab$ | async).selectedTab === 'player4' ? ' show active' : ''"
+      (click)="onChangeTab('player4')"
+      >Player 4</a
+    >
+  </li>
+</ul>
+
+<div class="tab-content" id="myTabContent">
+  <!-- Player 1 Tab -->
+
+  <div
+    class="tab-pane fade"
+    id="player1"
+    role="tabpanel"
+    aria-labelledby="player1-tab"
+    [ngClass]="(tab$ | async).selectedTab === 'player1' ? ' show active' : ''"
+  >
+    <player1></player1>
+  </div>
+
+  <!-- Player 2 Tab -->
+  <div
+    class="tab-pane fade"
+    id="player2"
+    role="tabpanel"
+    aria-labelledby="player2-tab"
+    [ngClass]="(tab$ | async).selectedTab === 'player2' ? ' show active' : ''"
+  >
+    <player2></player2>
+  </div>
+
+  <!-- Player 3 Tab -->
+  <div
+    class="tab-pane fade"
+    id="player3"
+    role="tabpanel"
+    aria-labelledby="player3-tab"
+    [ngClass]="(tab$ | async).selectedTab === 'player3' ? ' show active' : ''"
+  >
+    Player 3
+    <player3></player3>
+  </div>
+
+  <!-- Player 4 Tab -->
+  <div
+    class="tab-pane fade"
+    id="player4"
+    role="tabpanel"
+    aria-labelledby="player4-tab"
+    [ngClass]="(tab$ | async).selectedTab === 'player4' ? ' show active' : ''"
+  >
+    <player4></player4>
+  </div>
+</div>
+
+<!-- </div> -->
+
+<br />
+<stats-tabs></stats-tabs>

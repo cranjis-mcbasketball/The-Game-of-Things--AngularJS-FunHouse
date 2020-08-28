@@ -4,17 +4,30 @@ import { Observable } from 'rxjs';
 import { tabChangedAction } from '../store/tabs/tabs.actions';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+// import { Player1Component } from '../player1/player1.component'
+
+// export interface Fragments {
+//   id: number
+//   beginning: string;
+//   middle: string;
+//   end: string;
+// }
 @Component({
-  selector: 'stats-tabs',
-  templateUrl: './stats-tabs.component.html',
-  styleUrls: ['./stats-tabs.component.scss']
+  selector: 'app-tabs',
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.scss']
 })
-export class StatsTabsComponent implements OnInit {
+export class TabsComponent implements OnInit {
   tab$: Observable<any>;
+
+  // beginningList: Fragments[]
+  // confirmList: Fragments[] = [];
 
   constructor( private store: Store< {tab: any} > ) {
     this.tab$ = store.pipe( select('tab') );
   }
+
+
   items: any = [
     { name: "HSBC" },
     { name: "Nubank" },
@@ -24,6 +37,18 @@ export class StatsTabsComponent implements OnInit {
   ];
 
   itemsWithOrder: any;
+
+
+
+  // items: any = [
+  //   { name: "HSBC" },
+  //   { name: "Nubank" },
+  //   { name: "Banco do Brasil" },
+  //   { name: "Deutsche Bank" },
+  //   { name: "Santander" }
+  // ];
+
+
 
   ngOnInit() {
     this.itemsWithOrder = this.items

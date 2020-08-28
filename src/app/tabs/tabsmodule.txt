@@ -1,0 +1,58 @@
+
+/*import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+// import { RouterModule, Routes } from '@angular/router';
+
+
+import { Player1Component } from '../player1/player1.component';
+
+// import { StoreModule } from '@ngrx/store';
+// import { tabsReducer } from './store/tabs/tabs.reducer';
+import { TabsComponent } from './tabs.component';
+// import { StatsTabsComponent } from './stats-tabs/stats-tabs.component';
+// import { InstructionsComponent } from './instructions/instructions.component';
+
+import { DragDropModule } from '@angular/cdk/drag-drop';
+
+// const appRoutes: Routes = [
+//   { path: '', component: TabsComponent },
+//   { path: 'instructions', component: InstructionsComponent },
+//   { path: '',
+//     redirectTo: '/counter',
+//     pathMatch: 'full'
+//   },
+//   { path: '**', component: TabsComponent }
+// ];
+
+
+@NgModule({
+  declarations: [Player1Component],
+  imports: [
+    BrowserModule,
+    DragDropModule,
+    HttpClientModule
+  ],
+  providers: [],
+  bootstrap: [TabsComponent]
+})
+
+// something here is causing error in terminal
+
+// @NgModule({
+//   declarations: [TabsComponent, TabsComponent, StatsTabsComponent, InstructionsComponent],
+//   bootstrap: [TabsComponent],
+//   imports: [
+//     RouterModule.forRoot(
+//       appRoutes
+//     ),
+//     BrowserModule,
+//     FormsModule,
+//     DragDropModule,
+//     StoreModule.forRoot({ tab: tabsReducer })
+//   ],
+//   providers: [],
+// })
+export class TabsModule {}
+
+*/

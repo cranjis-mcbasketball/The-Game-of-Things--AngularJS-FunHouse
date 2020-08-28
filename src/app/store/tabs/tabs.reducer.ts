@@ -5,6 +5,6 @@ export const initialState: any = {selectedTab: 'player 1'};
 
 export const tabsReducer = createReducer(initialState,
   on(tabChangedAction, (state, { selectedTab }) => ({
-    selectedTab: selectedTab
+    selectedTab: selectedTab,
   }))
 );

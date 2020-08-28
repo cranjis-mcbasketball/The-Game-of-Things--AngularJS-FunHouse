@@ -1,1 +1,13 @@
 1. Set up environment, file system, and dependencies
+
+2. Added additional components, routing
+  - Added components for 4 players
+  - Added routing
+  - created app module and allocated dependencies
+
+
+  3. Added html templates and drag-drop functionality with cdk
+
+  4. Beginning, middle, and end items sort themselves automatically.
+
+  5. Began implementing ngrx state management for response submissions and winner board, experimenting with scss for the drag/drop lists.
