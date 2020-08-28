@@ -1,0 +1,70 @@
+
+
+<div cdkDropListGroup>
+
+
+  <div class="example-container" >
+    <h2>Beginning Options</h2>
+
+
+    <div
+      cdkDropList
+      [cdkDropListData]="beginnings"
+      class="choices-list"
+      id="beginning-options"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of beginnings" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container" >
+    <h2>Middle Options</h2>
+
+
+    <div
+      cdkDropList
+      [cdkDropListData]="middles"
+      class="choices-list"
+      id="middle-options"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of middles" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container" >
+    <h2>Ending Options</h2>
+
+
+    <div
+      cdkDropList
+      [cdkDropListData]="ends"
+      class="choices-list"
+      id="end-options"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of ends" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+
+
+  <div class="example-container" >
+    <h2>Response!</h2>
+  <div
+  cdkDropList
+  [cdkDropListData]="response"
+  class="choices-list"
+  id="response-submission"
+  (cdkDropListDropped)="drop($event)">
+
+
+  <div class="example-box"
+    *ngFor="let item of response" cdkDrag>{{item}}</div>
+
+
+</div>
+</div>
+
+
+</div>
+
+
