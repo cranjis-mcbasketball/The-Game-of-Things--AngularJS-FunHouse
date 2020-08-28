@@ -1,6 +1,8 @@
 {
   "name": "thingsapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "This project is a boilerplate for angular+ngrx projects. NgRx Store provides reactive state management for Angular apps inspired by Redux. Unify the events in your application and derive state using RxJS.",
+  "main": "main.ts",
   "dependencies": {
     "@angular/animations": "8.1.0",
     "@angular/cdk": "^7.3.1",
@@ -11,6 +13,7 @@
     "@angular/http": "^7.2.16",
     "@angular/platform-browser": "^10.0.14",
     "@angular/platform-browser-dynamic": "~10.0.11",
+    "@angular/router": "^10.0.14",
     "@ngrx/effects": "8.0.1",
     "@ngrx/entity": "8.0.1",
     "@ngrx/store": "8.0.1",
@@ -46,7 +49,7 @@
     "type": "git",
     "url": "git+https://github.com/cranjis-mcbasketball/The.Game.Of.Things--An-Angular-NgRx-FunHouse.git"
   },
-  "author": "Mason Borchard (cranjis-mcbasketball)",
+  "author": "Mason Borchard",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/cranjis-mcbasketball/The.Game.Of.Things--An-Angular-NgRx-FunHouse/issues"

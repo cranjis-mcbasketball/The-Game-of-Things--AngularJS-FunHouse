@@ -4,10 +4,10 @@
       <a class="nav-link" id="scoreboard-tab" data-toggle="tab" role="tab" aria-controls="scoreboard" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''" (click)="onChangeTab('scoreboard')">Score Board</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="submitted-answers" data-toggle="tab" role="tab" aria-controls="submitted-answers" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''" (click)="onChangeTab('submitted-answers')">Submitted Answers</a>
+      <a class="nav-link" id="submitted-answers" data-toggle="tab" role="tab" aria-controls="submitted-answers" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''" (click)="onChangeTab('submitted-answers')">Current Submitted Answers</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="winning-history" data-toggle="tab" role="tab" aria-controls="winning-history-2" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''" (click)="onChangeTab('winning-history')">Winning Answers</a>
+      <a class="nav-link" id="winning-history" data-toggle="tab" role="tab" aria-controls="winning-history-2" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''" (click)="onChangeTab('winning-history')">Winning Answer History</a>
       <!-- <a class="nav-link" id="winning-history" data-toggle="tab" href="#winning-history" role="tab" aria-controls="winning-history" aria-selected="false">Contact</a> -->
     </li>
   </ul>
@@ -32,7 +32,7 @@
     <!-- Winning Answers Tab -->
     <div class="tab-pane fade" id="winning-history" role="tabpanel" aria-labelledby="winning-history"
     [ngClass]="(tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''">
-      Contact: Sint sit mollit irure quis est nostrud cillum consequat
+
     </div>
 
   </div>

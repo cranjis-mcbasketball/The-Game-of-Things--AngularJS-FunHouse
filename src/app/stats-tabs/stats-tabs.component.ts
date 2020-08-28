@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./stats-tabs.component.scss']
 })
 
-export class SubmitTabsComponent {
+export class StatsTabsComponent {
 
 
 }
