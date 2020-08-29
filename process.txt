@@ -15,3 +15,5 @@
   6. Created table layout prototype for Player3 html, and fixed ordering algorithm bug pertaining to middle/end currentIndex/previousIndex swapping out
 
   7. Updated html and css for all four players
+
+  8. Switched from dummy data to HTTP using data from fragments.json (algorithm pulls pseudo-random indeces for the 6 beginning, middle, end choices for each player)

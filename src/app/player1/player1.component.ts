@@ -18,32 +18,52 @@ export interface Fragments {
   styleUrls: ["./player1.component.scss"],
 })
 export class Player1Component {
-  beginnings = [
-    "Beginning 1",
-    "Beginning 2",
-    "Beginning 3",
-    "Beginning 4",
-    "Beginning 5",
-    "Beginning 6",
-  ];
+  fragmentsData: Fragments[];
 
-  middles = [
-    "Middle 1",
-    "Middle 2",
-    "Middle 3",
-    "Middle 4",
-    "Middle 5",
-    "Middle 6",
-  ];
+  constructor(private httpClient: HttpClient) {
+    this.getFragList();
+  }
 
-  ends = ["End 1", "End 2", "End 3", "End 4", "End 5", "End 6"];
+  beginnings = [];
+
+  middles = [];
+
+  ends = [];
+
+  getFragList() {
+    this.httpClient
+      .get<Fragments[]>("assets/fragments.json")
+      .subscribe((list) => {
+        this.fragmentsData = list;
+        console.log(
+          "this.fragmentsData and list",
+          this.fragmentsData,
+          list[0].beginning,
+        );
+        for (var i = 0; i < 6; i++) {
+          var j = Math.floor(Math.random() * Math.floor(24));
+          this.beginnings.push(list[j].beginning);
+          this.middles.push(list[j].middle);
+          this.ends.push(list[j].end);
+        }
+        // list.forEach((item, i) => {
+        //   this.beginnings.push(item.beginning);
+        //   this.middles.push(item.middle);
+        //   this.ends.push(item.end);
+        // })
+        return list;
+      });
+  }
 
   response = [];
 
   itemsWithOrder: any;
+  // dataData: any;
 
   ngOnInit() {
     this.itemsWithOrder = this.response;
+
+    // this.dataData = this.getFragList();
   }
 
   viewOrderRes() {
@@ -52,11 +72,22 @@ export class Player1Component {
       item = { ...item, order: index };
       var itemVal = Object.values(item).join("");
       itemVal = itemVal.slice(0, itemVal.length - 1);
+      if (this.response[0] === undefined) {
+        this.response[0] = " ";
+      }
+      if (this.response[1] === undefined) {
+        this.response[1] = " ";
+      }
+      if (this.response[2] === undefined) {
+        this.response[2] = " ";
+      }
       if (this.beginnings.indexOf(itemVal) !== -1) {
         this.response[0] = item;
-      } else if (this.middles.indexOf(itemVal) !== -1) {
+      }
+      if (this.middles.indexOf(itemVal) !== -1) {
         this.response[1] = item;
-      } else if (this.ends.indexOf(itemVal) !== -1) {
+      }
+      if (this.ends.indexOf(itemVal) !== -1) {
         this.response[2] = item;
       }
     });
@@ -68,12 +99,6 @@ export class Player1Component {
       event.previousContainer.id === "beginning-options" &&
       event.container.id === "response-submission"
     ) {
-      console.log(
-        "this.beginnings, event.previousContainer.data",
-        this.beginnings,
-        event.previousContainer.data,
-      );
-
       if (event.previousContainer.data.length < 6) {
         if (event.currentIndex !== 0) {
           event.currentIndex = 0;
@@ -97,11 +122,13 @@ export class Player1Component {
       event.previousContainer.id === "middle-options" &&
       event.container.id === "response-submission"
     ) {
-      if (event.currentIndex !== 1) {
-        event.currentIndex = 1;
-      }
-
       if (event.previousContainer.data.length < 6) {
+        if (event.currentIndex !== 1) {
+          // if(event.container.data.length === 0){
+          //   event.currentIndex = 0;
+          // } else {}
+          event.currentIndex = 1;
+        }
         transferArrayItem(
           event.container.data,
           event.previousContainer.data,
@@ -120,25 +147,24 @@ export class Player1Component {
       event.previousContainer.id === "end-options" &&
       event.container.id === "response-submission"
     ) {
-      if (event.currentIndex !== 2) {
-        event.currentIndex = 2;
-
-        if (event.previousContainer.data.length < 6) {
-          transferArrayItem(
-            event.container.data,
-            event.previousContainer.data,
-            2,
-            event.previousContainer.data.length,
-          );
+      if (event.previousContainer.data.length < 6) {
+        if (event.currentIndex !== 2) {
+          event.currentIndex = 2;
         }
         transferArrayItem(
-          event.previousContainer.data,
           event.container.data,
-          event.previousIndex,
+          event.previousContainer.data,
           2,
+          event.previousContainer.data.length,
         );
-        this.viewOrderRes();
       }
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        2,
+      );
+      // this.viewOrderRes();
     }
   }
 }

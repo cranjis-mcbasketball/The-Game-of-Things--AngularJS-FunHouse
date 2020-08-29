@@ -18,39 +18,52 @@ export interface Fragments {
   styleUrls: ["./player3.component.scss"],
 })
 export class Player3Component {
-  // constructor(store: Store<AppState>) {
-  //   this.store = store;
-  //   this.store
-  //     .select("form", "newUser")
-  //     .subscribe((state) => (this.formState = state));
-  // }
+  fragmentsData: Fragments[];
 
-  beginnings = [
-    "Beginning 1",
-    "Beginning 2",
-    "Beginning 3",
-    "Beginning 4",
-    "Beginning 5",
-    "Beginning 6",
-  ];
+  constructor(private httpClient: HttpClient) {
+    this.getFragList();
+  }
 
-  middles = [
-    "Middle 1",
-    "Middle 2",
-    "Middle 3",
-    "Middle 4",
-    "Middle 5",
-    "Middle 6",
-  ];
+  beginnings = [];
 
-  ends = ["End 1", "End 2", "End 3", "End 4", "End 5", "End 6"];
+  middles = [];
+
+  ends = [];
+
+  getFragList() {
+    this.httpClient
+      .get<Fragments[]>("assets/fragments.json")
+      .subscribe((list) => {
+        this.fragmentsData = list;
+        console.log(
+          "this.fragmentsData and list",
+          this.fragmentsData,
+          list[0].beginning,
+        );
+        for (var i = 0; i < 6; i++) {
+          var j = Math.floor(Math.random() * Math.floor(24));
+          this.beginnings.push(list[j].beginning);
+          this.middles.push(list[j].middle);
+          this.ends.push(list[j].end);
+        }
+        // list.forEach((item, i) => {
+        //   this.beginnings.push(item.beginning);
+        //   this.middles.push(item.middle);
+        //   this.ends.push(item.end);
+        // })
+        return list;
+      });
+  }
 
   response = [];
 
   itemsWithOrder: any;
+  // dataData: any;
 
   ngOnInit() {
     this.itemsWithOrder = this.response;
+
+    // this.dataData = this.getFragList();
   }
 
   viewOrderRes() {
