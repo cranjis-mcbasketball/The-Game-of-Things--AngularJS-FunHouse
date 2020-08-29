@@ -13,3 +13,5 @@
   5. Began implementing ngrx state management for response submissions and winner board, experimenting with scss for the drag/drop lists.
 
   6. Created table layout prototype for Player3 html, and fixed ordering algorithm bug pertaining to middle/end currentIndex/previousIndex swapping out
+
+  7. Updated html and css for all four players

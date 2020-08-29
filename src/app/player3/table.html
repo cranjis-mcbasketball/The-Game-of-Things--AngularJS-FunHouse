@@ -4,8 +4,8 @@
       <thead>
         <tr>
           <th class="list-heading">Beginning Choices</th>
-          <th>Middle Choices</th>
-          <th>Ending Choices</th>
+          <th class="list-heading">Middle Choices</th>
+          <th class="list-heading">Ending Choices</th>
         </tr>
       </thead>
 
@@ -105,19 +105,24 @@
     <form>
       <!-- Name string input -->
       <!-- <div class="field required" [class.error]="showFieldError('name')"> -->
-      <label>Name</label>
-      <input
-        ngrxField="name"
-        class="ui input"
-        placeholder="Cranjis McBasketball"
-      />
+
+      <span class="list-item-box">
+        <label><strong>Name: </strong> </label>
+        <span>{{' '}}</span>
+        <input
+          ngrxField="name"
+          class="ui input"
+          placeholder="Cranjis McBasketball"
+        />
+      </span>
+
       <!-- <label class="error" *ngIf="showFieldError('name')">
           {{ fieldErrors.name }}
         </label>
       </div> -->
 
       <span class="list-item-box" placeholder="The mustard fell outta the tree">
-        <label>My Response:</label>
+        <label><strong>My Response:</strong></label>
         {{(response[0] || ' ') + ' ' + (response[1] || ' ') + ' ' + (response[2]
         || ' ')}}
       </span>
