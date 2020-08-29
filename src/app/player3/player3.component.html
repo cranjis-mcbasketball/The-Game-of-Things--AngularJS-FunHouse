@@ -1,3 +1,47 @@
+<table cellpadding="0" cellspacing="0">
+  <td>
+    <div
+      cdkDropList
+      [cdkDropListData]="beginnings"
+      class="choices-list"
+      id="beginning-options"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <tr>
+        {{
+          item
+        }}
+      </tr>
+    </div>
+  </td>
+  <tr>
+    <div
+      cdkDropList
+      [cdkDropListData]="beginnings"
+      class="choices-list"
+      id="beginning-options"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <td>
+        {{ item }}
+      </td>
+    </div>
+  </tr>
+  <tr>
+    <div
+      cdkDropList
+      [cdkDropListData]="beginnings"
+      class="choices-list"
+      id="beginning-options"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <td>
+        {{ item }}
+      </td>
+    </div>
+  </tr>
+</table>
+
 <div cdkDropListGroup>
   <div class="list-container">
     <h2 class="list-heading">Beginning Options</h2>
@@ -9,7 +53,7 @@
       id="beginning-options"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of beginnings" cdkDrag>
+      <div class="list-item-box" *ngFor="let item of beginnings" cdkDrag>
         {{ item }}
       </div>
     </div>
@@ -25,7 +69,7 @@
       id="middle-options"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of middles" cdkDrag>
+      <div class="list-item-box" *ngFor="let item of middles" cdkDrag>
         {{ item }}
       </div>
     </div>
@@ -41,7 +85,7 @@
       id="end-options"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of ends" cdkDrag>
+      <div class="list-item-box" *ngFor="let item of ends" cdkDrag>
         {{ item }}
       </div>
     </div>
@@ -56,31 +100,31 @@
       id="response-submission"
       (cdkDropListDropped)="drop($event)"
     >
-      <div class="example-box" *ngFor="let item of response" cdkDrag>
+      <div class="list-item-box" *ngFor="let item of response" cdkDrag>
         {{ item }}
       </div>
     </div>
-
-    <form>
-      <!-- Name string input -->
-      <!-- <div class="field required" [class.error]="showFieldError('name')"> -->
-      <label>Name</label>
-      <input
-        ngrxField="name"
-        class="ui input"
-        placeholder="Cranjis McBasketball"
-      />
-      <!-- <label class="error" *ngIf="showFieldError('name')">
-          {{ fieldErrors.name }}
-        </label>
-      </div> -->
-
-      <!-- <div class="field" [class.error]="showFieldError('userSubmit')">
-        <label>My Response:</label>
-        {{ response[0] + " " + response[1] + " " + response[2] }}
-      </div> -->
-
-      <button type="submit">Submit Response!</button>
-    </form>
   </div>
+
+  <form>
+    <!-- Name string input -->
+    <!-- <div class="field required" [class.error]="showFieldError('name')"> -->
+    <label>Name</label>
+    <input
+      ngrxField="name"
+      class="ui input"
+      placeholder="Cranjis McBasketball"
+    />
+    <!-- <label class="error" *ngIf="showFieldError('name')">
+        {{ fieldErrors.name }}
+      </label>
+    </div> -->
+
+    <label>My Response:</label>
+    <div class="list-item-box" placeholder="The mustard fell outta the tree">
+      {{ response[0] + " " + response[1] + " " + response[2] }}
+    </div>
+
+    <button type="submit">Submit Response!</button>
+  </form>
 </div>

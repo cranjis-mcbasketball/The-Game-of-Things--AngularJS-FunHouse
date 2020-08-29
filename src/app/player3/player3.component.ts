@@ -14,7 +14,7 @@ export interface Fragments {
 }
 @Component({
   selector: "player3",
-  templateUrl: "./player3.component.html",
+  templateUrl: "./table.html",
   styleUrls: ["./player3.component.scss"],
 })
 export class Player3Component {
@@ -59,11 +59,22 @@ export class Player3Component {
       item = { ...item, order: index };
       var itemVal = Object.values(item).join("");
       itemVal = itemVal.slice(0, itemVal.length - 1);
+      if (this.response[0] === undefined) {
+        this.response[0] = " ";
+      }
+      if (this.response[1] === undefined) {
+        this.response[1] = " ";
+      }
+      if (this.response[2] === undefined) {
+        this.response[2] = " ";
+      }
       if (this.beginnings.indexOf(itemVal) !== -1) {
         this.response[0] = item;
-      } else if (this.middles.indexOf(itemVal) !== -1) {
+      }
+      if (this.middles.indexOf(itemVal) !== -1) {
         this.response[1] = item;
-      } else if (this.ends.indexOf(itemVal) !== -1) {
+      }
+      if (this.ends.indexOf(itemVal) !== -1) {
         this.response[2] = item;
       }
     });
@@ -75,12 +86,6 @@ export class Player3Component {
       event.previousContainer.id === "beginning-options" &&
       event.container.id === "response-submission"
     ) {
-      console.log(
-        "this.beginnings, event.previousContainer.data",
-        this.beginnings,
-        event.previousContainer.data,
-      );
-
       if (event.previousContainer.data.length < 6) {
         if (event.currentIndex !== 0) {
           event.currentIndex = 0;
@@ -104,11 +109,13 @@ export class Player3Component {
       event.previousContainer.id === "middle-options" &&
       event.container.id === "response-submission"
     ) {
-      if (event.currentIndex !== 1) {
-        event.currentIndex = 1;
-      }
-
       if (event.previousContainer.data.length < 6) {
+        if (event.currentIndex !== 1) {
+          // if(event.container.data.length === 0){
+          //   event.currentIndex = 0;
+          // } else {}
+          event.currentIndex = 1;
+        }
         transferArrayItem(
           event.container.data,
           event.previousContainer.data,
@@ -127,25 +134,24 @@ export class Player3Component {
       event.previousContainer.id === "end-options" &&
       event.container.id === "response-submission"
     ) {
-      if (event.currentIndex !== 2) {
-        event.currentIndex = 2;
-
-        if (event.previousContainer.data.length < 6) {
-          transferArrayItem(
-            event.container.data,
-            event.previousContainer.data,
-            2,
-            event.previousContainer.data.length,
-          );
+      if (event.previousContainer.data.length < 6) {
+        if (event.currentIndex !== 2) {
+          event.currentIndex = 2;
         }
         transferArrayItem(
-          event.previousContainer.data,
           event.container.data,
-          event.previousIndex,
+          event.previousContainer.data,
           2,
+          event.previousContainer.data.length,
         );
-        this.viewOrderRes();
       }
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        2,
+      );
+      // this.viewOrderRes();
     }
   }
 }

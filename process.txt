@@ -11,3 +11,5 @@
   4. Beginning, middle, and end items sort themselves automatically.
 
   5. Began implementing ngrx state management for response submissions and winner board, experimenting with scss for the drag/drop lists.
+
+  6. Created table layout prototype for Player3 html, and fixed ordering algorithm bug pertaining to middle/end currentIndex/previousIndex swapping out
