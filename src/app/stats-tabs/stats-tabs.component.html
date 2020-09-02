@@ -1,39 +1,118 @@
-<h5>Nav 2 (Child Component)</h5>
+<h5>Things Stats</h5>
 <ul class="nav nav-tabs" id="myTab-2" role="tablist">
-    <li class="nav-item">
-      <a class="nav-link" id="scoreboard-tab" data-toggle="tab" role="tab" aria-controls="scoreboard" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''" (click)="onChangeTab('scoreboard')">Score Board</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="submitted-answers" data-toggle="tab" role="tab" aria-controls="submitted-answers" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''" (click)="onChangeTab('submitted-answers')">Submitted Answers</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" id="winning-history" data-toggle="tab" role="tab" aria-controls="winning-history-2" aria-selected="false" [ngClass]="(tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''" (click)="onChangeTab('winning-history')">Winning Answers</a>
-      <!-- <a class="nav-link" id="winning-history" data-toggle="tab" href="#winning-history" role="tab" aria-controls="winning-history" aria-selected="false">Contact</a> -->
-    </li>
-  </ul>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="scoreboard-tab"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="scoreboard"
+      aria-selected="false"
+      [ngClass]="
+        (tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''
+      "
+      (click)="onChangeTab('scoreboard')"
+      >Score Board</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="submitted-answers"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="submitted-answers"
+      aria-selected="false"
+      [ngClass]="
+        (tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''
+      "
+      (click)="onChangeTab('submitted-answers')"
+      >Submitted Answers</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      id="winning-history"
+      data-toggle="tab"
+      role="tab"
+      aria-controls="winning-history-2"
+      aria-selected="false"
+      [ngClass]="
+        (tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''
+      "
+      (click)="onChangeTab('winning-history')"
+      >Winning Answers</a
+    >
+    <!-- <a class="nav-link" id="winning-history" data-toggle="tab" href="#winning-history" role="tab" aria-controls="winning-history" aria-selected="false">Contact</a> -->
+  </li>
+</ul>
 
-  <div class="tab-content" id="myTabContent-2">
+<div class="tab-content" id="myTabContent-2">
+  <!-- Scoreboard Tab -->
+  <div
+    class="tab-pane fade"
+    id="scoreboard"
+    role="tabpanel"
+    aria-labelledby="scoreboard-tab"
+    [ngClass]="
+      (tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''
+    "
+  >
+    <table>
+      <thead>
+        <tr>
+          <th class="list-heading">Game Number</th>
+          <th class="list-heading">Current Round</th>
+          <th class="list-heading">Current Prompt</th>
+        </tr>
+      </thead>
 
-     <!-- Scoreboard Tab -->
-    <div class="tab-pane fade" id="scoreboard" role="tabpanel" aria-labelledby="scoreboard-tab"
-    [ngClass]="(tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''">
-    <input type="button" value="Next Round"/>
-    <br>
-    <br>
-    <input type="button" value="Start New Game!"/>
-    </div>
-
-     <!-- Submitted Answers Tab -->
-    <div class="tab-pane fade" id="submitted-answers" role="tabpanel" aria-labelledby="submitted-answers"
-     [ngClass]="(tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''">
-
-    </div>
-
-    <!-- Winning Answers Tab -->
-    <div class="tab-pane fade" id="winning-history" role="tabpanel" aria-labelledby="winning-history"
-    [ngClass]="(tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''">
-
-    <winner-root></winner-root>
-    </div>
-
+      <tbody>
+        <tr>
+          <td id="game_id">
+            test
+            <!-- {{ (game$ | async).game_id }} -->
+          </td>
+          <td id="current-round">{{ (round$ | async).roundNum }}</td>
+          <td id="current-prompt">
+            {{ (round$ | async).prompt }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <input
+      type="button"
+      id="new-round"
+      value="Next Round"
+      (click)="getPrompt()"
+    />
+    <br />
+    <br />
+    <input type="button" value="Start New Game!" (click)="onNewGame(event)" />
   </div>
+
+  <!-- Submitted Answers Tab -->
+  <div
+    class="tab-pane fade"
+    id="submitted-answers"
+    role="tabpanel"
+    aria-labelledby="submitted-answers"
+    [ngClass]="
+      (tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''
+    "
+  ></div>
+
+  <!-- Winning Answers Tab -->
+  <div
+    class="tab-pane fade"
+    id="winning-history"
+    role="tabpanel"
+    aria-labelledby="winning-history"
+    [ngClass]="
+      (tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''
+    "
+  >
+    <winner-root></winner-root>
+  </div>
+</div>

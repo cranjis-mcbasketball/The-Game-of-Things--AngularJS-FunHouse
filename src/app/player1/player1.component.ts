@@ -1,10 +1,17 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { HttpClient } from "@angular/common/http";
+import { GameState } from "../store/game/state";
+import { Observable } from "rxjs/Observable";
+import { Store } from "@ngrx/store";
+// import {
+//   NewRoundAction,
+//   newGameAction,
+// } from "../store/game/fragments.actions";
 
 export interface Fragments {
   order: number;
@@ -17,12 +24,28 @@ export interface Fragments {
   templateUrl: "./player1.component.html",
   styleUrls: ["./player1.component.scss"],
 })
-export class Player1Component {
+export class Player1Component implements OnInit {
+  // round$: Observable<any>;
+  // game$: Observable<any>;
+  // promptAndOptions$: Observable<any>;
+  // beginnings = ["1", "1", "1", "1", "1", "1"];
+  // middles = ["2", "2", "2", "2", "2", "2"];
+  // ends = ["3", "3", "3", "3", "3", "3"];
+  // prompt = "";
   fragmentsData: Fragments[];
 
-  constructor(private httpClient: HttpClient) {
+  constructor(
+    private httpClient: HttpClient,
+    private store: Store<{ round: any; game: any }>,
+  ) {
     this.getFragList();
+    // this.game$ = store.pipe(select("game"));
+    // this.round$ = store.pipe(select("round"));
   }
+
+  // constructor(private store: Store<{ promptOptions: any }>) {
+  //   this.promptOptions$ = store.pipe(select("promptOptions"));
+  // }
 
   beginnings = [];
 
@@ -31,6 +54,11 @@ export class Player1Component {
   ends = [];
 
   getFragList() {
+    this.beginnings = [];
+
+    this.middles = [];
+
+    this.ends = [];
     this.httpClient
       .get<Fragments[]>("assets/fragments.json")
       .subscribe((list) => {
@@ -54,15 +82,21 @@ export class Player1Component {
         return list;
       });
   }
-
   response = [];
 
   itemsWithOrder: any;
   // dataData: any;
+  // constructor(private store: Store<AppState>) {
+  //   this.promptAndOptions = store.select("promptOptions");
+  //   // this.prompt = this.promptAndOptions.prompt;
+  // }
 
   ngOnInit() {
     this.itemsWithOrder = this.response;
-
+    this.getFragList();
+    // this.beginnings = this.promptAndOptions.options[0].player1.beginnings;
+    // this.middles = this.promptAndOptions.options[0].player1[0].middles;
+    // this.ends = this.promptAndOptions.options[0].player1.ends;
     // this.dataData = this.getFragList();
   }
 

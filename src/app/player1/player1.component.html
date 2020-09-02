@@ -89,7 +89,7 @@
     </div>
 
     <form>
-      <span class="list-item-box">
+      <span class="list-item-box" id="player-name">
         <label><strong>Name: </strong> </label>
         <span>{{ " " }}</span>
         <input
@@ -99,7 +99,11 @@
         />
       </span>
 
-      <span class="list-item-box" placeholder="The mustard fell outta the tree">
+      <span
+        class="list-item-box"
+        id="things-response"
+        placeholder="The mustard fell outta the tree"
+      >
         <label><strong>My Response:</strong></label>
         {{
           (response[0] || " ") +

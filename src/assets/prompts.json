@@ -1,0 +1,29 @@
+[
+  { "order": 1, "prompt": "things you wouldn't do on an airplane" },
+  { "order": 2, "prompt": "things that you wouldn't say to your teacher" },
+  { "order": 3, "prompt": "things you want to do when quarantine is over" },
+  { "order": 4, "prompt": "things you tell the priest at confession" },
+  {
+    "order": 5,
+    "prompt": "things a grandparent would have said when they were your age"
+  },
+  {
+    "order": 6,
+    "prompt": "things you don't say to highway patrol when you get pulled over"
+  },
+  {
+    "order": 7,
+    "prompt": "things you wouldn't want your boss walking in on you saying"
+  },
+  { "order": 8, "prompt": "things that indicate you live a healthy lifestyle" },
+  { "order": 9, "prompt": "things not to do in a hospital" },
+  {
+    "order": 10,
+    "prompt": "things you wouldn't say when the border officer asks you why you're visiting the country"
+  },
+  { "order": 11, "prompt": "things you shouldn't do in prison" },
+  {
+    "order": 12,
+    "prompt": "things that will get the guy sitting next to you on the plane to get up and leave"
+  }
+]
