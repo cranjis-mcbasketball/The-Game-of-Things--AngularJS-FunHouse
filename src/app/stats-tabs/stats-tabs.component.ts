@@ -39,7 +39,7 @@ export class StatsTabsComponent implements OnInit {
   round$: Observable<GameState>;
   GameSubscription: Subscription;
   // prompt;
-  prompt: PromptItem[] = [];
+  prompt: string = "Nothing to see here";
   roundNum: number = 0;
   gameError: Error = null;
   currentInt = Math.random() * Math.floor(11);
@@ -56,8 +56,6 @@ export class StatsTabsComponent implements OnInit {
     console.log("prompt", this.prompt);
     console.log("roundNum", this.roundNum);
     console.log("round$", this.round$);
-
-    this.getPrompt();
   }
 
   onChangeTab(event) {
@@ -70,7 +68,7 @@ export class StatsTabsComponent implements OnInit {
   getPrompt() {
     console.log("GameState", GameState);
     console.log("prompt getPrompt", this.prompt);
-    console.log("roundNum", this.roundNum);
+    console.log("roundNum updated", this.roundNum);
     console.log("round$", this.round$);
     this.currentInt = this.currentInt;
     this.GameSubscription = this.round$
@@ -78,7 +76,7 @@ export class StatsTabsComponent implements OnInit {
         map((x) => {
           console.log("x", x);
           this.roundNum = x.roundNum++;
-          this.prompt = x.prompt;
+          this.prompt = x.prompt.prompt;
           this.gameError = x.gameError;
         }),
       )

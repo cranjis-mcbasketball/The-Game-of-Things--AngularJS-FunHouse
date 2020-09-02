@@ -19,7 +19,7 @@ export const BeginGetPromptAction = createAction("[Prompt] - Begin Get Prompt");
 
 export const SuccessGetPromptAction = createAction(
   "[Prompt] - Success Get Prompt",
-  props<{ payload: PromptItem[] }>(),
+  props<{ payload: PromptItem }>(),
 );
 
 export const ErrorGameAction = createAction("[Game] - Error", props<Error>());

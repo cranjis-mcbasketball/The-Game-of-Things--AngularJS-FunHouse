@@ -19,10 +19,10 @@ export class GameEffects {
       mergeMap((action) =>
         this.gameService.getPrompts().pipe(
           map((data: PromptItem[]) => {
-            // var j = Math.floor(Math.random() * Math.floor(11));
+            var j = Math.floor(Math.random() * Math.floor(11));
             console.log("payload", data);
             return GameActions.SuccessGetPromptAction({
-              payload: data,
+              payload: data[j],
             });
           }),
           catchError((error: Error) => {
