@@ -75,9 +75,9 @@ export class StatsTabsComponent implements OnInit {
       .pipe(
         map((x) => {
           console.log("x", x);
-          this.roundNum = x.roundNum++;
           this.prompt = x.prompt.prompt;
           this.gameError = x.gameError;
+          this.roundNum = this.roundNum += 1;
         }),
       )
       .subscribe();
