@@ -73,16 +73,24 @@ export class StatsTabsComponent implements OnInit {
     this.currentInt = this.currentInt;
     this.GameSubscription = this.round$
       .pipe(
-        map((x) => {
+        map((x, i) => {
           console.log("x", x);
           this.prompt = x.prompt.prompt;
           this.gameError = x.gameError;
-          this.roundNum = this.roundNum += 1;
+          if (i === 2) {
+            this.roundNum = x.roundNum++;
+          }
         }),
       )
       .subscribe();
-    this._store.dispatch(GameActions.BeginGetPromptAction());
 
     this._store.dispatch(GameActions.NewRoundAction());
+    this._store.dispatch(GameActions.BeginGetPromptAction());
+  }
+
+  ngOnDestroy() {
+    if (this.GameSubscription) {
+      this.GameSubscription.unsubscribe();
+    }
   }
 }

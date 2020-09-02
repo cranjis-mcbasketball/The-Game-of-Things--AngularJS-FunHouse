@@ -9,6 +9,19 @@ import GameState, { initializeState } from "./state";
 
 const initialState = initializeState();
 
+// export const initialState: any = { round: 0, prompt: "nothing to see here!" };
+
+// export const newRoundReducer = createReducer(
+//   initialState,
+//   // on(GameActions.NewRoundAction, (state: GameState) => ({
+//   //   ...state,
+//   //   roundNum: state.roundNum++,
+//   // })),
+//   on(GameActions.NewRoundAction, (state: GameState) => {
+//     return { ...state, roundNum: state.roundNum++ };
+//   }),
+// );
+
 const reducer = createReducer(
   initialState,
   on(GameActions.GetPromptAction, (state) => state),
@@ -17,8 +30,14 @@ const reducer = createReducer(
     return { ...state, prompt: payload, gameError: null };
   }),
 
-  on(GameActions.NewRoundAction, (state: GameState) => {
-    return { ...state, roundNum: state.roundNum++ };
+  // on(GameActions.NewRoundAction, (state: GameState) => {
+  //   return { ...state, roundNum: state.roundNum++ };
+  // }),
+
+  on(GameActions.NewRoundAction, (state) => {
+    console.log("NewRoundAction state", state);
+    return { ...state };
+    // return state.roundNum++;
   }),
 
   on(GameActions.ErrorGameAction, (state: GameState, error: Error) => {
