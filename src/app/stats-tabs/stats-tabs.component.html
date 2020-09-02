@@ -76,7 +76,7 @@
           </td>
           <td id="current-round">{{ (round$ | async).roundNum }}</td>
           <td id="current-prompt">
-            {{ (round$ | async).prompt }}
+            {{ (round$ | async).prompt[currentInt].prompt }}
           </td>
         </tr>
       </tbody>

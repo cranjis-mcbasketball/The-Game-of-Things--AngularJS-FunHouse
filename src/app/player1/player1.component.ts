@@ -5,7 +5,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { HttpClient } from "@angular/common/http";
-import { GameState } from "../store/game/state";
+import GameState from "../store/game/state";
 import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 // import {

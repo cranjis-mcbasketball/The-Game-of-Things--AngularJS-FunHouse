@@ -34,7 +34,7 @@ const reducer = createReducer(
   //   return { ...state, roundNum: state.roundNum++ };
   // }),
 
-  on(GameActions.NewRoundAction, (state) => {
+  on(GameActions.NewRoundAction, (state : GameState) => {
     return { ...state, roundNum: state.roundNum++ };
   }),
 
