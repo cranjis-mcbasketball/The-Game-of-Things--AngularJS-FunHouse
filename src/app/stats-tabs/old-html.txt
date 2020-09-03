@@ -1,3 +1,7 @@
+CreateSubmissions = SubmitResponse
+Submissions = Response
+
+
 <h5>Nav 2 (Child Component)</h5>
 <ul class="nav nav-tabs1" id="stats-tabs" role="tablist">
     <li class="nav-item">

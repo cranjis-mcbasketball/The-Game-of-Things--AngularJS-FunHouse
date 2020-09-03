@@ -3,15 +3,8 @@ import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { tabChangedAction } from '../store/tabs/tabs.actions';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import GameState from "../store/game/state";
 
-// import { Player1Component } from '../player1/player1.component'
-
-// export interface Fragments {
-//   id: number
-//   beginning: string;
-//   middle: string;
-//   end: string;
-// }
 @Component({
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
@@ -19,13 +12,14 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class TabsComponent implements OnInit {
   tab$: Observable<any>;
+  round$: Observable<GameState>;
 
-  // beginningList: Fragments[]
-  // confirmList: Fragments[] = [];
 
-  constructor( private store: Store< {tab: any} > ) {
-    this.tab$ = store.pipe( select('tab') );
+  constructor(private store: Store<{ tab: any }>) {
+    this.tab$ = store.pipe(select('tab'));
+    this.round$ = store.pipe(select("round"));
   }
+
 
 
   items: any = [
@@ -54,8 +48,8 @@ export class TabsComponent implements OnInit {
     this.itemsWithOrder = this.items
   }
 
-  onChangeTab( event ) {
-    this.store.dispatch( tabChangedAction({ selectedTab: event }) );
+  onChangeTab(event) {
+    this.store.dispatch(tabChangedAction({ selectedTab: event }));
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -73,13 +67,13 @@ export class TabsComponent implements OnInit {
     }
   }
 
-    // copy array of items to other and add order property
-    viewOrder() {
-      this.itemsWithOrder = [];
-      this.items.map((item, index) => {
-        item = { ...item, order: index };
-        this.itemsWithOrder.push(item);
-      });
-    }
+  // copy array of items to other and add order property
+  viewOrder() {
+    this.itemsWithOrder = [];
+    this.items.map((item, index) => {
+      item = { ...item, order: index };
+      this.itemsWithOrder.push(item);
+    });
+  }
 
 }

@@ -10,17 +10,6 @@ export interface PromptItem {
   prompt: string;
 }
 
-export interface PromptAndOptions {
-  game_id: number;
-  round: number;
-  prompt: string;
-  options: Array<Object>;
-}
-
-export interface CurrentRound {
-  round: number;
-  prompt: string;
-}
 
 export interface WinningGuy {
   prompt: string;
@@ -29,9 +18,4 @@ export interface WinningGuy {
   date: Date;
 }
 
-export interface AppState {
-  game_id: number;
-  round: number;
-  winner_hist: Array<object>;
-  promptAndOptions: PromptAndOptions[];
-}
+

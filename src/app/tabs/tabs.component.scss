@@ -7,9 +7,19 @@
   &:last-child{
     border: none;
   }
+
+
   &:nth-child(even){
     background: #f9f9f9;
   }
+}
+
+.game-status-heading{
+  padding: 0 15px 0 15px;
+}
+
+.game-status-item{
+   padding: 0 15px 0 15px;
 }
 .custom-placeholder {
   // background striped (obviously nothing beautiful)

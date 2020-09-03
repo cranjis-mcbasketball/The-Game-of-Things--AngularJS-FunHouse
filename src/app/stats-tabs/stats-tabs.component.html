@@ -26,28 +26,29 @@
   <div class="tab-pane fade" id="scoreboard" role="tabpanel" aria-labelledby="scoreboard-tab" [ngClass]="
       (tab$ | async).selectedTab === 'scoreboard' ? ' show active' : ''
     ">
-    <table>
-      <thead>
-        <tr>
-          <th class="list-heading">Game Number</th>
-          <th class="list-heading">Current Round</th>
-          <th class="list-heading">Current Prompt</th>
-        </tr>
-      </thead>
+    <div class="list-container">
+      <table>
+        <thead>
+          <tr>
+            <th class="game-status-heading">Current Round</th>
+            <th> <span> </span></th>
+            <th class="game-status-heading">Current Prompt</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td id="game_id">
-            test
-            <!-- {{ (game$ | async).game_id }} -->
-          </td>
-          <td id="current-round">{{ (round$ | async).roundNum }}</td>
-          <td id="current-prompt">
-            {{ (round$ | async).prompt.prompt }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
+        <tbody>
+          <tr>
+            <td class="game-status-item" id="current-round">{{ (round$ | async).roundNum }}</td>
+            <td><span>
+
+              </span></td>
+            <td class="game-status-item" id="current-prompt">
+              {{ (round$ | async).prompt.prompt }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <input type="button" id="new-round" value="Next Round" (click)="newRound()" />
     <br />
     <br />
@@ -57,8 +58,33 @@
   <!-- Submitted Answers Tab -->
   <div class="tab-pane fade" id="submitted-answers" role="tabpanel" aria-labelledby="submitted-answers" [ngClass]="
       (tab$ | async).selectedTab === 'submitted-answers' ? ' show active' : ''
-    "></div>
+    ">
+    <h2 class="list-heading">Rank Responses For... </h2>
 
+    <table>
+      <thead>
+        <tr>
+          <th class="game-status-heading">Round: {{ (round$ | async).roundNum }}</th>
+
+          <th class="game-status-heading"> Prompt: {{ (round$ | async).prompt.prompt }}</th>
+        </tr>
+      </thead>
+
+      <!-- <tbody>
+          <tr>
+            <td class="game-status-item" id="current-round"></td>
+            <td><span>
+
+              </span></td>
+            <td class="game-status-item" id="current-prompt">
+              Prompt: {{ (round$ | async).prompt.prompt }}
+            </td>
+          </tr>
+        </tbody> -->
+    </table>
+
+    <judge-stuff></judge-stuff>
+  </div>
   <!-- Winning Answers Tab -->
   <div class="tab-pane fade" id="winning-history" role="tabpanel" aria-labelledby="winning-history" [ngClass]="
       (tab$ | async).selectedTab === 'winning-history' ? ' show active' : ''

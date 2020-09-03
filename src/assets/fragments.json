@@ -1,100 +1,146 @@
-[ { "order": 1,
-  "beginning": "Right now I'm",
-   "middle": "cutting my pants into shorts",
-   "end": "because now is the appropriate time to do so" },
- { "order": 2,
-   "beginning": "I'll spend this summer",
-   "middle": "proving that my real name is Cranjis McBasketball",
-   "end":
-    "because the most difficult part of doing Tom Delonge cosplay is getting rid of my eyebrows and I already barely had eyebrows" },
- { "order": 3,
-   "beginning": "Currently",
-   "middle": "peeing in the Holy Water at the party",
-   "end": "because I can" },
- { "order": 4,
-   "beginning": "I'm about to be",
-   "middle": "peeing in the Holy Water",
-   "end": "because it's inexpensive entertainment" },
- { "order": 5,
-   "beginning": "Ask me why I'm",
-   "middle": "losing my iPhone 11",
-   "end": "instead of behaving like a normal person" },
- { "order": 6,
-   "beginning": "I don't know why, but",
-   "middle": "cosplaying as Beavis and Butthead",
-   "end":
-    "because trust me, you'd be complaining more if I were playing my guitar instead" },
- { "order": 7,
-   "beginning": "Totally",
-   "middle": "getting kicked out of Whole Foods",
-   "end": "because I don't want to be here" },
- { "order": 8,
-   "beginning": "Don't mind me",
-   "middle": "skateboarding inside of Whole Foods",
-   "end": "as the audience looks at their phones instead of me" },
- { "order": 9,
-   "beginning": "Don't bother me, I'm",
-   "middle": "spilling Icelandic schnapps on the flight attendant",
-   "end": "because in New Jersey that's just what we do" },
- { "order": 10,
-   "beginning": "I wish I were",
-   "middle": "walking into the bar dressed like I'm going to the fjords",
-   "end": "but I swear I feel guilty about it" },
- { "order": 11,
-   "beginning": "Last night I was",
-   "middle": "being initiated into the flat-earther cult",
-   "end": "instead of going to the party" },
- { "order": 12,
-   "beginning": "I can see me",
-   "middle": "washing my hair with handsoap in a public bathroom",
-   "end": "because I have no money" },
- { "order": 15,
-   "beginning": "My friends are",
-   "middle": "smoking menthol cigarettes",
-   "end": "because I still drink Jim Beam unironically" },
- { "order": 13,
-   "beginning": "One year ago at this time I'd be",
-   "middle": "mistaking 'cruise control' for 'auto pilot'",
-   "end": "instead of doing the things I should be" },
- { "order": 16,
-   "beginning": "Don't ask why I'm",
-   "middle": "getting my surfboard stolen",
-   "end":
-    "because I'm thrift store underwear and you still has the tags on" },
- { "order": 17,
-   "beginning": "Reluctantly",
-   "middle": "hating New Jersey",
-   "end":
-    "since I was too embarrassed to try on underwear on my head at Walmart for my Beavis and Butthead cosplay" },
- { "order": 18,
-   "beginning": "I miss",
-   "middle": "navigating around the fjords with a broken compass",
-   "end": "coz I don't know why" },
- { "order": 19,
-   "beginning": "I am",
-   "middle": "blasting christian satanic death metal",
-   "end": "coz nobody likes me" },
- { "order": 20,
-   "beginning": "I'll be over here",
-   "middle": "playing 20 minute guitar solos",
-   "end": "because I can't make up my mind" },
- { "order": 21,
-   "beginning": "I'm going to pretend I'm not",
-   "middle": "reinacing Impractical Jokers episodes",
-   "end": "because I like breaking the rules" },
- { "order": 14,
-   "beginning": "My parents think I'm",
-   "middle": "playing scrabble without the vowels",
-   "end": "because it's just a bad habit" },
- { "order": 22,
-   "beginning": "I am currently",
-   "middle": "majoring in vitamin water",
-   "end": "because the bell rang" },
- { "order": 23,
-   "beginning": "When I'm not complaining about New Jersey I'm",
-   "middle": "misusing airquotes",
-   "end": "because I'm all out of ideas" },
- { "order": 24,
-   "beginning": "2 days til I'm",
-   "middle": "listening to ROCK N ROLL MCDONALDS on full-crank mode",
-   "end": "because it's better than the alternative" } ]
+[
+  {
+    "order": 1,
+    "beginning": "Right now I'm",
+    "middle": "cutting my pants into shorts",
+    "end": "because now is the appropriate time to do so"
+  },
+  {
+    "order": 2,
+    "beginning": "I'll spend this summer",
+    "middle": "proving that my real name is Cranjis McBasketball",
+    "end": "because the most difficult part of doing Tom Delonge cosplay is getting rid of my eyebrows and I already barely had eyebrows"
+  },
+  {
+    "order": 3,
+    "beginning": "Currently",
+    "middle": "peeing in the Holy Water at the party",
+    "end": "because I can"
+  },
+  {
+    "order": 4,
+    "beginning": "I'm about to be",
+    "middle": "peeing in the Holy Water",
+    "end": "because it's inexpensive entertainment"
+  },
+  {
+    "order": 5,
+    "beginning": "Ask me why I'm",
+    "middle": "losing my iPhone 11",
+    "end": "instead of behaving like a normal person"
+  },
+  {
+    "order": 6,
+    "beginning": "I don't know why, but I'm",
+    "middle": "cosplaying as Beavis and Butthead",
+    "end": "because trust me, you'd be complaining more if I were playing my guitar instead"
+  },
+  {
+    "order": 7,
+    "beginning": "Totally",
+    "middle": "getting kicked out of Whole Foods",
+    "end": "because I don't want to be here"
+  },
+  {
+    "order": 8,
+    "beginning": "Don't mind me",
+    "middle": "skateboarding inside of Whole Foods",
+    "end": "as the audience looks at their phones instead of me"
+  },
+  {
+    "order": 9,
+    "beginning": "Don't bother me, I'm",
+    "middle": "spilling Icelandic schnapps on the flight attendant",
+    "end": "because in New Jersey that's just what we do"
+  },
+  {
+    "order": 10,
+    "beginning": "I wish I were",
+    "middle": "walking into the bar dressed like I'm going to the fjords",
+    "end": "but I swear I feel guilty about it"
+  },
+  {
+    "order": 11,
+    "beginning": "Last night I was",
+    "middle": "being initiated into the flat-earther cult",
+    "end": "instead of going to the party"
+  },
+  {
+    "order": 12,
+    "beginning": "I can see me",
+    "middle": "washing my hair with handsoap in a public bathroom",
+    "end": "because I have no money"
+  },
+  {
+    "order": 15,
+    "beginning": "My friends are",
+    "middle": "smoking menthol cigarettes",
+    "end": "because I still drink Jim Beam unironically"
+  },
+  {
+    "order": 13,
+    "beginning": "One year ago at this time I'd be",
+    "middle": "mistaking 'cruise control' for 'auto pilot'",
+    "end": "instead of doing the things I should be"
+  },
+  {
+    "order": 16,
+    "beginning": "Don't ask why I'm",
+    "middle": "getting my surfboard stolen",
+    "end": "because I'm thrift store underwear and you still has the tags on"
+  },
+  {
+    "order": 17,
+    "beginning": "Reluctantly",
+    "middle": "hating New Jersey",
+    "end": "since I was too embarrassed to try on underwear on my head at Walmart for my Beavis and Butthead cosplay"
+  },
+  {
+    "order": 18,
+    "beginning": "I miss",
+    "middle": "navigating around the fjords with a broken compass",
+    "end": "coz I don't know why"
+  },
+  {
+    "order": 19,
+    "beginning": "I am",
+    "middle": "blasting christian satanic death metal",
+    "end": "coz nobody likes me"
+  },
+  {
+    "order": 20,
+    "beginning": "I'll be over here",
+    "middle": "playing 20 minute guitar solos",
+    "end": "because I can't make up my mind"
+  },
+  {
+    "order": 21,
+    "beginning": "I'm going to pretend I'm not",
+    "middle": "reinacting Impractical Jokers episodes",
+    "end": "because I like breaking the rules"
+  },
+  {
+    "order": 14,
+    "beginning": "My parents think I'm",
+    "middle": "playing scrabble without the vowels",
+    "end": "because it's just a bad habit"
+  },
+  {
+    "order": 22,
+    "beginning": "I am currently",
+    "middle": "majoring in vitamin water",
+    "end": "because the bell rang"
+  },
+  {
+    "order": 23,
+    "beginning": "When I'm not complaining about New Jersey I'm",
+    "middle": "misusing airquotes",
+    "end": "because I'm all out of ideas"
+  },
+  {
+    "order": 24,
+    "beginning": "2 days til I'm",
+    "middle": "listening to ROCK N ROLL MCDONALDS on full-crank mode",
+    "end": "because it's better than the alternative"
+  }
+]

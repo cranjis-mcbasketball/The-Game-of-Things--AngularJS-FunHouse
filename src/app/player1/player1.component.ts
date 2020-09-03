@@ -5,7 +5,7 @@ import {
   transferArrayItem,
 } from "@angular/cdk/drag-drop";
 import { HttpClient } from "@angular/common/http";
-import GameState from "../store/game/state";
+import * as States from "../store/game/state";
 import { Observable } from "rxjs/Observable";
 import { Store } from "@ngrx/store";
 // import {
@@ -63,11 +63,6 @@ export class Player1Component implements OnInit {
       .get<Fragments[]>("assets/fragments.json")
       .subscribe((list) => {
         this.fragmentsData = list;
-        console.log(
-          "this.fragmentsData and list",
-          this.fragmentsData,
-          list[0].beginning,
-        );
         for (var i = 0; i < 6; i++) {
           var j = Math.floor(Math.random() * Math.floor(24));
           this.beginnings.push(list[j].beginning);

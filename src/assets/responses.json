@@ -1,1 +1,22 @@
-
+[
+    {
+        "name": "Secret Agent Randy Beans",
+        "response": "I don't know why, but I'm cosplaying as Beavis and Butthead instead of behaving like a normal person",
+        "date": "new Date()"
+    },
+    {
+        "name": "Mother Coconuts",
+        "response": "Don't mind me reinacting Impractical Jokers episodes because trust me, you'd be complaining more if I were playing my guitar instead",
+        "date": "new Date()"
+    },
+    {
+        "name": "Cranjis McBasketball",
+        "response": "I'll spend this summer spilling Icelandic schnapps on the flight attendant because it's inexpensive entertainment",
+        "date": "new Date()"
+    },
+    {
+        "name": "Father John Mister T",
+        "response": "When I'm not complaining about New Jersey I'm mistaking 'cruise control' for 'auto pilot' because I like breaking the rules",
+        "date": "new Date()"
+    }
+]

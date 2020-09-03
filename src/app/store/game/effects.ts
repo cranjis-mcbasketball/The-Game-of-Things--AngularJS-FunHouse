@@ -20,7 +20,6 @@ export class GameEffects {
         this.gameService.newRounds().pipe(
           map((data: PromptItem[]) => {
             var j = Math.floor(Math.random() * Math.floor(11));
-            console.log("payload", data);
             return GameActions.SuccessnewPromptAction({
               payload: data[j],
             });
