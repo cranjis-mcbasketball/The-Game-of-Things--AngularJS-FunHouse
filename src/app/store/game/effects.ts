@@ -9,19 +9,19 @@ import { PromptItem } from "./models";
 
 @Injectable()
 export class GameEffects {
-  constructor(private gameService: GameHttpService, private action$: Actions) {}
+  constructor(private gameService: GameHttpService, private action$: Actions) { }
 
   randomInt = Math.floor(Math.random() * Math.floor(11));
 
-  GetPrompt$: Observable<Action> = createEffect(() =>
+  newRound$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
-      ofType(GameActions.BeginGetPromptAction),
+      ofType(GameActions.BeginnewPromptAction),
       mergeMap((action) =>
-        this.gameService.getPrompts().pipe(
+        this.gameService.newRounds().pipe(
           map((data: PromptItem[]) => {
             var j = Math.floor(Math.random() * Math.floor(11));
             console.log("payload", data);
-            return GameActions.SuccessGetPromptAction({
+            return GameActions.SuccessnewPromptAction({
               payload: data[j],
             });
           }),

@@ -17,12 +17,12 @@ import { PromptItem } from "../store/game/models";
   styleUrls: ["./stats-tabs.component.scss"],
   // changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// export class getPrompt {
+// export class newRound {
 //   constructor(private httpClient: HttpClient) {
-//     this.getPrompt();
+//     this.newRound();
 //     // this.promptAndOptions();
 //   }
-//   getPrompt() {
+//   newRound() {
 //     this.httpClient
 //       .get<PromptItem[]>("assets/prompts.json")
 //     .subscribe((res) => {
@@ -59,17 +59,10 @@ export class StatsTabsComponent implements OnInit {
   }
 
   onChangeTab(event) {
-    console.log("this.tab$", this.tab$);
-    console.log("prompt changetab", this.prompt);
-    console.log("new tab event", event);
     this.store.dispatch(tabChangedAction({ selectedTab: event }));
   }
 
-  getPrompt() {
-    console.log("GameState", GameState);
-    console.log("prompt getPrompt", this.prompt);
-    console.log("roundNum updated", this.roundNum);
-    console.log("round$", this.round$);
+  newRound() {
     this.currentInt = this.currentInt;
     this.GameSubscription = this.round$
       .pipe(
@@ -85,12 +78,17 @@ export class StatsTabsComponent implements OnInit {
       .subscribe();
 
     this._store.dispatch(GameActions.NewRoundAction());
-    this._store.dispatch(GameActions.BeginGetPromptAction());
+    this._store.dispatch(GameActions.BeginnewPromptAction());
   }
 
-  ngOnDestroy() {
-    if (this.GameSubscription) {
-      this.GameSubscription.unsubscribe();
-    }
+  newGame() {
+    this._store.dispatch(GameActions.NewGameAction());
+    this._store.dispatch(GameActions.BeginnewPromptAction());
   }
+
+  // ngOnDestroy() {
+  //   if (this.GameSubscription) {
+  //     this.GameSubscription.unsubscribe();
+  //   }
+  // }
 }

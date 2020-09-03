@@ -1,23 +1,23 @@
 // import { Injectable } from "@angular/core";
 import { Action, createAction, props } from "@ngrx/store";
 
-import { FragmentItem, PromptItem, PromptAndOptions, AppState } from "./models";
-// import { Http } from "@angular/http";
+import { PromptItem } from "./models";
 
-export const NEW_GAME = "NEW_GAME";
 
-export const NEW_ROUND = "NEW_ROUND";
 
-export const GetPromptAction = createAction("[Prompt] - Get Prompt");
+export const newRoundAction = createAction("[Prompt] - Get Prompt");
 
 export const NewRoundAction = createAction(
   "[NewRound] NewRoundAction",
-  // props<{ roundNum: number }>(),
 );
 
-export const BeginGetPromptAction = createAction("[Prompt] - Begin Get Prompt");
+export const NewGameAction = createAction(
+  "[NewGame] NewGameAction",
+);
 
-export const SuccessGetPromptAction = createAction(
+export const BeginnewPromptAction = createAction("[Prompt] - Begin Get Prompt");
+
+export const SuccessnewPromptAction = createAction(
   "[Prompt] - Success Get Prompt",
   props<{ payload: PromptItem }>(),
 );

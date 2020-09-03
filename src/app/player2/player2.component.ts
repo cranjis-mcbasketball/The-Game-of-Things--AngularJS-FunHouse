@@ -35,22 +35,12 @@ export class Player2Component {
       .get<Fragments[]>("assets/fragments.json")
       .subscribe((list) => {
         this.fragmentsData = list;
-        console.log(
-          "this.fragmentsData and list",
-          this.fragmentsData,
-          list[0].beginning,
-        );
         for (var i = 0; i < 6; i++) {
           var j = Math.floor(Math.random() * Math.floor(24));
           this.beginnings.push(list[j].beginning);
           this.middles.push(list[j].middle);
           this.ends.push(list[j].end);
         }
-        // list.forEach((item, i) => {
-        //   this.beginnings.push(item.beginning);
-        //   this.middles.push(item.middle);
-        //   this.ends.push(item.end);
-        // })
         return list;
       });
   }
@@ -58,17 +48,14 @@ export class Player2Component {
   response = [];
 
   itemsWithOrder: any;
-  // dataData: any;
 
   ngOnInit() {
     this.itemsWithOrder = this.response;
-
-    // this.dataData = this.getFragList();
   }
 
   viewOrderRes() {
     this.response.map((item, index) => {
-      console.log("this.response", this.response);
+      ;
       item = { ...item, order: index };
       var itemVal = Object.values(item).join("");
       itemVal = itemVal.slice(0, itemVal.length - 1);
@@ -91,7 +78,6 @@ export class Player2Component {
         this.response[2] = item;
       }
     });
-    console.log("this.itemsWithOrder", this.itemsWithOrder);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -124,9 +110,6 @@ export class Player2Component {
     ) {
       if (event.previousContainer.data.length < 6) {
         if (event.currentIndex !== 1) {
-          // if(event.container.data.length === 0){
-          //   event.currentIndex = 0;
-          // } else {}
           event.currentIndex = 1;
         }
         transferArrayItem(
@@ -164,7 +147,6 @@ export class Player2Component {
         event.previousIndex,
         2,
       );
-      // this.viewOrderRes();
     }
   }
 }

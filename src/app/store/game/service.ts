@@ -8,9 +8,9 @@ import { Observable } from "rxjs";
 })
 export class GameHttpService {
   private ApiURL: string = "assets/prompts.json";
-  constructor(private httpclient: HttpClient) {}
+  constructor(private httpclient: HttpClient) { }
 
-  getPrompts(): Observable<PromptItem[]> {
+  newRounds(): Observable<PromptItem[]> {
     return this.httpclient.get<PromptItem[]>(this.ApiURL);
   }
 }
@@ -19,15 +19,15 @@ export class GameHttpService {
 // export class GameService {
 //   public currentPrompt;
 //   constructor(public httpClient: HttpClient) {
-//     this.getPrompt();
+//     this.newRound();
 
 //     // this.promptAndOptions();
 //   }
 //   ngOnInit() {
 //     // this.itemsWithOrder = this.items;
-//     this.getPrompt();
+//     this.newRound();
 //   }
-//   getPrompt() {
+//   newRound() {
 //     this.httpClient
 //       .get<PromptItem[]>("assets/prompts.json")
 //       .subscribe((res) => {
