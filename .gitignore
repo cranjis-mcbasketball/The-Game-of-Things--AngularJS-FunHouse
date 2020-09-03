@@ -35,6 +35,7 @@ speed-measure-plugin.json
 /libpeerconnection.log
 npm-debug.log
 submit/
+old-code/
 
 # System Files
 .DS_Store
