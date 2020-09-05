@@ -50,8 +50,8 @@ export class StatsTabsComponent implements OnInit {
   currentInt = Math.random() * Math.floor(11);
   SubmissionsList: Submissions[] = [];
   submissionsError: Error = null;
-  Title: string = '';
-  IsCompleted: boolean = false;
+  userResponse: string = '';
+  userName: string = '';
   submittedAnswers = [];
 
   constructor(
@@ -81,6 +81,7 @@ export class StatsTabsComponent implements OnInit {
   }
 
   newRound() {
+
     this.currentInt = this.currentInt;
     this.GameSubscription = this.round$
       .pipe(
@@ -97,6 +98,7 @@ export class StatsTabsComponent implements OnInit {
 
     this._store.dispatch(GameActions.NewRoundAction());
     this._store.dispatch(GameActions.BeginnewPromptAction());
+    console.log('this.store', this._store)
   }
 
   newGame() {
@@ -104,19 +106,18 @@ export class StatsTabsComponent implements OnInit {
     this._store.dispatch(GameActions.BeginnewPromptAction());
   }
 
-  submissionsTab() {
-    const submissions: Submissions = { Title: this.Title, IsCompleted: this.IsCompleted };
-    this._store.dispatch(SubmissionsActions.BeginCreateSubmissionsAction({ payload: submissions }));
-    this.Title = '';
-    this.IsCompleted = false;
+  // submissionsTab() {
+  //   const submissions: Submissions = { userResponse: this.userResponse, userName: this.userName };
+  //   this._store.dispatch(SubmissionsActions.BeginCreateSubmissionsAction({ payload: submissions }));
+  //   this.userResponse = '';
 
 
-    for (var i = 0; i < this.SubmissionsList.length; i++) {
-      this.submittedAnswers.push(this.SubmissionsList[i])
-    }
+  //   for (var i = 0; i < this.SubmissionsList.length; i++) {
+  //     this.submittedAnswers.push(this.SubmissionsList[i])
+  //   }
 
 
-  }
+  // }
 
   // ngOnDestroy() {
   //   if (this.SubmissionsSubscription) {

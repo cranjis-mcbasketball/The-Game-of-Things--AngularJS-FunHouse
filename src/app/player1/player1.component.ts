@@ -7,7 +7,21 @@ import {
 import { HttpClient } from "@angular/common/http";
 import * as States from "../store/game/state";
 import { Observable } from "rxjs/Observable";
-import { Store } from "@ngrx/store";
+import { Store, select } from "@ngrx/store";
+import { map } from "rxjs/operators";
+
+// Game round and prompt
+import GameState from "../store/game/state";
+import * as GameActions from "../store/game/actions";
+import { state } from "@angular/animations";
+
+
+// Submissions
+import * as SubmissionsActions from '../store/submissions/actions';
+import { Submissions } from '../store/submissions/models';
+import { SubmissionsState } from '../store/submissions/state';
+import { SubmissionsReducer } from '../store/submissions/reducer';
+import { Subscription } from 'rxjs';
 // import {
 //   NewRoundAction,
 //   newGameAction,
@@ -25,22 +39,31 @@ export interface Fragments {
   styleUrls: ["./player1.component.scss"],
 })
 export class Player1Component implements OnInit {
-  // round$: Observable<any>;
+  fragmentsData: Fragments[];
+
+  submissions$: Observable<SubmissionsState>;
+  round$: Observable<GameState>;
+  SubmissionsSubscription: Subscription;
+  SubmissionsList: Submissions[] = [];
+  submissionsError: Error = null;
+  userResponse: string = '';
+  userName: string = '';
+  submittedAnswers = [];
   // game$: Observable<any>;
   // promptAndOptions$: Observable<any>;
   // beginnings = ["1", "1", "1", "1", "1", "1"];
   // middles = ["2", "2", "2", "2", "2", "2"];
   // ends = ["3", "3", "3", "3", "3", "3"];
   // prompt = "";
-  fragmentsData: Fragments[];
+
 
   constructor(
     private httpClient: HttpClient,
-    private store: Store<{ round: any; game: any }>,
+    private store: Store<{ tab: any, round: GameState, submissions: SubmissionsState }>
   ) {
     this.getFragList();
-    // this.game$ = store.pipe(select("game"));
-    // this.round$ = store.pipe(select("round"));
+    this.submissions$ = store.pipe(select("submissions"));
+    this.round$ = store.pipe(select("round"));
   }
 
   // constructor(private store: Store<{ promptOptions: any }>) {
@@ -54,11 +77,7 @@ export class Player1Component implements OnInit {
   ends = [];
 
   getFragList() {
-    this.beginnings = [];
 
-    this.middles = [];
-
-    this.ends = [];
     this.httpClient
       .get<Fragments[]>("assets/fragments.json")
       .subscribe((list) => {
@@ -86,14 +105,57 @@ export class Player1Component implements OnInit {
   //   // this.prompt = this.promptAndOptions.prompt;
   // }
 
+
+
   ngOnInit() {
     this.itemsWithOrder = this.response;
-    this.getFragList();
-    // this.beginnings = this.promptAndOptions.options[0].player1.beginnings;
-    // this.middles = this.promptAndOptions.options[0].player1[0].middles;
-    // this.ends = this.promptAndOptions.options[0].player1.ends;
-    // this.dataData = this.getFragList();
+    // this.getFragList();
+
+    // this.SubmissionsSubscription = this.submissions$
+    //   .pipe(
+    //     map(x => {
+    //       this.SubmissionsList = x.Submissions;
+    //     })
+    //   )
+    //   .subscribe();
+
+    // this.store.dispatch(SubmissionsActions.BeginGetSubmissionsAction());
   }
+
+  submissionsTab() {
+    console.log('this.SubmissionsList', this.SubmissionsList)
+    const submissions: Submissions = { userResponse: this.userResponse, userName: this.userName };
+    // this.store.dispatch(SubmissionsActions.BeginCreateSubmissionsAction({ payload: submissions }));
+
+    this.SubmissionsSubscription = this.submissions$
+      .pipe(
+        map(x => {
+          this.SubmissionsList = x.Submissions;
+        })
+      )
+      .subscribe();
+
+    this.store.dispatch(SubmissionsActions.BeginGetSubmissionsAction());
+    this.userResponse = '';
+
+
+    for (var i = 0; i < this.SubmissionsList.length; i++) {
+      this.submittedAnswers.push(this.SubmissionsList[i])
+    }
+
+    this.store.subscribe(function () {
+      localStorage.setItem('state', JSON.stringify(this.store.getState()));
+    })
+
+    // const array = createFormArrayState('userSubmission', ['']);
+    // const updatedArray = setValue(['userSubmission'])(Submissions[]);
+    // const updatedArrayUncurried = setValue(array, ['userSubmission']);
+    // const updatedArrayViaAction = SubmissionsReducer(array, new SubmissionsActions.BeginCreateSubmissionsAction(array.id, ['userSubmission']));
+    console.log('this.submittedAnswers', this.submittedAnswers)
+    console.log('this.store', this.store)
+
+  }
+
 
   viewOrderRes() {
     this.response.map((item, index) => {

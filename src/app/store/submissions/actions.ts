@@ -14,6 +14,11 @@ export const SuccessGetSubmissionsAction = createAction(
   props<{ payload: Submissions[] }>()
 );
 
+// export const CreateSubmissionsAction = createAction(
+//   '[Submissions] - Create Submissions',
+//   props<Submissions>()
+// );
+
 export const CreateSubmissionsAction = createAction(
   '[Submissions] - Create Submissions',
   props<Submissions>()
@@ -28,5 +33,11 @@ export const SuccessCreateSubmissionsAction = createAction(
   '[Submissions] - Sucess Create Submissions',
   props<{ payload: Submissions }>()
 );
+
+
+// export const SuccessCreateSubmissionsAction = createAction(
+//   '[Submissions] - Sucess Create Submissions',
+//   props<{ Submissions: Submissions }>()
+// );
 
 export const ErrorSubmissionsAction = createAction("[Game] - Error", props<Error>());

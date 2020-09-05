@@ -14,7 +14,7 @@
           <td>
             <div cdkDropList [cdkDropListData]="beginnings" class="choices-list" id="beginning-options"
               (cdkDropListDropped)="drop($event)">
-              <div class="list-item-box" id="beginning-list-item" *ngFor="let item of beginnings" cdkDrag>
+              <div class="choices-list" id="beginning-list-item" *ngFor="let item of beginnings" cdkDrag>
                 {{ item }}
               </div>
             </div>
@@ -22,7 +22,7 @@
           <td>
             <div cdkDropList [cdkDropListData]="middles" class="choices-list" id="middle-options"
               (cdkDropListDropped)="drop($event)">
-              <div class="list-item-box" id="middle-list-item" *ngFor="let item of middles" cdkDrag>
+              <div class="choices-list" id="middle-list-item" *ngFor="let item of middles" cdkDrag>
                 {{ item }}
               </div>
             </div>
@@ -30,7 +30,7 @@
           <td>
             <div cdkDropList [cdkDropListData]="ends" class="choices-list" id="end-options"
               (cdkDropListDropped)="drop($event)">
-              <div class="list-item-box" id="end-list-item" *ngFor="let item of ends" cdkDrag>
+              <div class="choices-list" id="end-list-item" *ngFor="let item of ends" cdkDrag>
                 {{ item }}
               </div>
             </div>
@@ -47,20 +47,20 @@
 
       <div cdkDropList [cdkDropListData]="response" class="choices-list" id="response-submission"
         (cdkDropListDropped)="drop($event)">
-        <div class="list-item-box" *ngFor="let item of response" cdkDrag>
+        <div class="choices-list" *ngFor="let item of response" cdkDrag>
           {{ item }}
         </div>
       </div>
     </div>
 
     <form>
-      <span class="list-item-box">
+      <span class="choices-list">
         <label><strong>Name: </strong> </label>
         <span>{{ " " }}</span>
         <input ngrxField="name" class="ui input" placeholder="Cranjis McBasketball" />
       </span>
 
-      <span class="list-item-box" placeholder="The mustard fell outta the tree">
+      <span class="choices-list" placeholder="The mustard fell outta the tree">
         <label><strong>My Response:</strong></label>
         {{
           (response[0] || " ") +

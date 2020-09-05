@@ -1,4 +1,11 @@
 export interface Submissions {
-  Title: string;
-  IsCompleted: boolean;
+  userName: string;
+  userResponse: string;
+}
+
+
+export interface WinningHistory {
+  userName: string;
+  prompt: string;
+  userResponse: string;
 }
