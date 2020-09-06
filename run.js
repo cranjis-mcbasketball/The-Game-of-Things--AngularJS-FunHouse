@@ -3,10 +3,10 @@
 //   var middles = [];
 //   var ends = [];
 //   var all = [];
-//   for (var i = 0; i < 6; i++) {
-//     var j = Math.floor(Math.random() * Math.floor(24));
-//     var k = Math.floor(Math.random() * Math.floor(24));
-//     var l = Math.floor(Math.random() * Math.floor(24));
+//   for (var i = 0; i < 8; i++) {
+//     var j = Math.floor(Math.random() * Math.floor(list.length));
+//     var k = Math.floor(Math.random() * Math.floor(list.length));
+//     var l = Math.floor(Math.random() * Math.floor(list.length));
 //     beginnings.push(j);
 //     middles.push(k);
 //     ends.push(l);
@@ -97,10 +97,10 @@
 //     // var middles = [];
 //     // var ends = [];
 //     // var all = [];
-//     for (var i = 0; i < 6; i++) {
-//       var j = Math.floor(Math.random() * Math.floor(24));
-//       var k = Math.floor(Math.random() * Math.floor(24));
-//       var l = Math.floor(Math.random() * Math.floor(24));
+//     for (var i = 0; i < 8; i++) {
+//       var j = Math.floor(Math.random() * Math.floor(list.length));
+//       var k = Math.floor(Math.random() * Math.floor(list.length));
+//       var l = Math.floor(Math.random() * Math.floor(list.length));
 //       selectedFragmentsArr[p][`player${p + 1}`].beginnings.push(
 //         res[j].beginning,
 //       );
@@ -151,10 +151,10 @@ var fragments2 = function () {
     // var middles = [];
     // var ends = [];
     // var all = [];
-    for (var i = 0; i < 6; i++) {
-      var j = Math.floor(Math.random() * Math.floor(24));
-      var k = Math.floor(Math.random() * Math.floor(24));
-      var l = Math.floor(Math.random() * Math.floor(24));
+    for (var i = 0; i < 8; i++) {
+      var j = Math.floor(Math.random() * Math.floor(list.length));
+      var k = Math.floor(Math.random() * Math.floor(list.length));
+      var l = Math.floor(Math.random() * Math.floor(list.length));
       selectedFragmentsArr[p][`player${p + 1}`].beginnings.push(j);
       selectedFragmentsArr[p][`player${p + 1}`].middles.push(k);
       selectedFragmentsArr[p][`player${p + 1}`].ends.push(l);

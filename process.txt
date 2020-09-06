@@ -17,3 +17,16 @@
   7. Updated html and css for all four players
 
   8. Switched from dummy data to HTTP using data from fragments.json (algorithm pulls pseudo-random indeces for the 6 beginning, middle, end choices for each player)
+
+  9. Implemented store for GameState with actions, reducers effects, models to increase roundNum by one and change prompt whn 'New Round' button is clicked
+
+  10. Completed prompt fetcher service and effects and round incrementer 
+
+  11. Fixed bug so that new round only increments once o click, and prompt only renders the string property
+
+  12. Created NewGame action for click of new game button to set round back to 1
+
+  13. Created CDK drag-drop area for judge to drag and drop responses in order of favorite to least favorite
+
+  14. Reformatted fragment boxes to make a more compact user interface and
+  experimented with submission form options

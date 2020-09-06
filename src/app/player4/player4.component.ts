@@ -36,8 +36,8 @@ export class Player4Component {
       .subscribe((list) => {
         this.fragmentsData = list;
 
-        for (var i = 0; i < 6; i++) {
-          var j = Math.floor(Math.random() * Math.floor(24));
+        for (var i = 0; i < 8; i++) {
+          var j = Math.floor(Math.random() * Math.floor(list.length));
           this.beginnings.push(list[j].beginning);
           this.middles.push(list[j].middle);
           this.ends.push(list[j].end);
