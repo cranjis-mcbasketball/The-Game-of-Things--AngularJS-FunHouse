@@ -1,14 +1,17 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, AfterViewInit, ElementRef, NgZone, ViewChild } from "@angular/core";
 import {
   CdkDragDrop,
   moveItemInArray,
   transferArrayItem,
+  CdkDragMove
+
 } from "@angular/cdk/drag-drop";
 import { HttpClient } from "@angular/common/http";
 import * as States from "../store/game/state";
 import { Observable } from "rxjs/Observable";
 import { Store, select } from "@ngrx/store";
 import { map } from "rxjs/operators";
+// import { MatDialogRef } from '@angular/material';
 
 // Game round and prompt
 import GameState from "../store/game/state";
@@ -39,6 +42,8 @@ export interface Fragments {
   styleUrls: ["./player1.component.scss"],
 })
 export class Player1Component implements OnInit {
+
+
   fragmentsData: Fragments[];
 
   submissions$: Observable<SubmissionsState>;
@@ -59,6 +64,8 @@ export class Player1Component implements OnInit {
 
   constructor(
     private httpClient: HttpClient,
+    private ngZone: NgZone,
+    // dialogRef: MatDialogRef<Player1Component>,
     private store: Store<{ tab: any, round: GameState, submissions: SubmissionsState }>
   ) {
     this.getFragList();
@@ -75,6 +82,7 @@ export class Player1Component implements OnInit {
   middles = [];
 
   ends = [];
+
 
   getFragList() {
 
@@ -122,6 +130,100 @@ export class Player1Component implements OnInit {
     // this.store.dispatch(SubmissionsActions.BeginGetSubmissionsAction());
   }
 
+
+  ngAfterViewInit() {
+    var handler = document.querySelector(".handler");
+    var hhandler = document.querySelector(".hhandler");
+    var wrapper = handler.closest(".wrapper");
+    var hwrapper = hhandler.closest(".wrapper");
+    // var wrapper = document.getElementsByClassName("wrapper");
+    // var wrapper = document.getElementById("wrapper1");
+    var box = wrapper.querySelector(".box");
+    var section = wrapper.querySelector(".section");
+    // var boxBeginnings = wrapper.querySelector("#beginning-options");
+    // var boxMiddles = wrapper.querySelector("#middle-options");
+    // var boxEndings = wrapper.querySelector("#end-options");
+    var isHandlerDragging = false;
+    var isHHandlerDragging = false;
+
+    document.addEventListener("mousedown", function (e) {
+
+      // If mousedown event is fired from .handler, toggle flag to true
+      if (e.target === handler) {
+        console.log("mousedown e.target:", e.target)
+        isHandlerDragging = true;
+      } else if (e.target === hhandler) {
+        console.log("mousedown e.target:", e.target)
+        isHHandlerDragging = true;
+      }
+    });
+
+    document.addEventListener("mousemove", function (e) {
+
+
+      if (!isHandlerDragging && !isHHandlerDragging) {
+        return false;
+      }
+      console.log("mousemove e.target:", e.target)
+
+      if (isHandlerDragging) {
+        var containerOffsetLeft = wrapper.offsetLeft;
+        var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+        var boxminWidth = 60;
+        box.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
+      }
+
+
+      if (isHHandlerDragging) {
+        var containerOffsetTop = hwrapper.offsetTop;
+
+
+        var pointerRelativeYpos = e.clientY - containerOffsetTop;
+
+
+        var sectionMinHeight = 50;
+
+
+        section.style.height = Math.max(sectionMinHeight, pointerRelativeYpos - 8) + "px";
+
+      }
+
+
+      // box.style.flexGrow = 0;
+      // section.style.flexGrow = 0;
+
+
+
+      // Resize box A
+      // * 8px is the left/right spacing between .handler and its inner pseudo-element
+      // * Set flex-grow to 0 to prevent it from growing
+      // var el = document.getElementById("box1")
+      // el.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
+
+      // var el = document.getElementById("box1")
+      // el.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
+
+      // el.style.flex-grow = 0;
+
+      // var boxWidth = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
+      // var boxFlexGrow = 0;
+
+
+
+    });
+
+
+
+
+    document.addEventListener("mouseup", function (e) {
+      console.log("mouseup e.target:", e.target)
+      isHandlerDragging = false;
+      isHHandlerDragging = false;
+
+    });
+
+  }
+
   submissionsTab() {
     console.log('this.SubmissionsList', this.SubmissionsList)
     const submissions: Submissions = { userResponse: this.userResponse, userName: this.userName };
@@ -155,6 +257,7 @@ export class Player1Component implements OnInit {
     console.log('this.store', this.store)
 
   }
+
 
 
   viewOrderRes() {
@@ -258,4 +361,8 @@ export class Player1Component implements OnInit {
       // this.viewOrderRes();
     }
   }
+
+
+
+
 }

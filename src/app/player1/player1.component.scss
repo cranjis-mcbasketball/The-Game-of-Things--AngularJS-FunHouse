@@ -3,15 +3,28 @@
   max-width: 100%;
   margin: 0 15px 15px 0;
   display: block;
+  position: relative;
 }
-
+// .choices {
+//   background-color: #444;
+//   border-radius: 5px;
+//   padding: 0px;
+//   // font-size: 150%;
+  
+//   /* Use box-sizing so that element's outerwidth will match width property */
+//   box-sizing: border-box;
+  
+//   /* Allow box to grow and shrink, and ensure they are all equally sized */
+//   flex: 1 1 auto;
+// }
 .choices-list {
   border: solid 1px #ccc;
   min-height: 60px;
   background: white;
   border-radius: 4px;
   overflow: hidden;
-  display: block;
+  flex-grow: 0;
+  // display: block;
 }
 
 .list-heading {
@@ -22,7 +35,7 @@
   padding: 10px 5px;
   border-bottom: solid 1px #ccc;
   color: rgba(0, 0, 0, 0.87);
-  display: block;
+  // display: block;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -30,6 +43,19 @@
   cursor: move;
   background: white;
   font-size: 14px;
+
+  flex-grow: 0;
+  
+  /* Use box-sizing so that element's outerwidth will match width property */
+  box-sizing: border-box;
+  
+  /* Allow box to grow and shrink, and ensure they are all equally sized */
+  flex: 1 1 auto;
+}
+
+.list-heading {
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .cdk-drag-preview {
@@ -53,4 +79,131 @@
 
 .choices-list.cdk-drop-list-dragging .list-item-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+
+.wrapper {
+  background-color: #fff;
+  color: #444;
+  /* Use flexbox */
+  display: flex;
+}
+
+
+.box {
+  background-color: #444;
+  color: rgba(29, 22, 22, 0.788);
+  border-radius: 5px;
+  // padding: 0px;
+  font-size: 90%;
+  // flex-grow: 0;
+  
+  /* Use box-sizing so that element's outerwidth will match width property */
+  box-sizing: border-box;
+  
+  /* Allow box to grow and shrink, and ensure they are all equally sized */
+  flex: 1 1 auto;
+}
+
+.section {
+  background-color: rgb(0, 86, 121);
+  color: rgba(29, 22, 22, 0.788);
+  border-radius: 5px;
+  // padding: 0px;
+  font-size: 90%;
+  // flex-grow: 0;
+  
+  /* Use box-sizing so that element's outerwidth will match width property */
+  box-sizing: border-box;
+  
+  /* Allow box to grow and shrink, and ensure they are all equally sized */
+  flex: 1 1 auto;
+  flex-direction: row;
+}
+
+.handler {
+  width: 20px;
+  padding: 0;
+  cursor: ew-resize;
+  flex: 0 0 auto;
+}
+
+.handler::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 100%;
+  background: red;
+  margin: 0 auto;
+}
+
+
+.hhandler {
+  width: 200px;
+  height: 4px;
+  padding: 0;
+  cursor: ns-resize;
+  flex: auto auto 0;
+}
+
+.hhandler::before {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: rgb(159, 9, 179);
+  margin: 0 auto;
+}
+
+
+/////@at-root
+
+// ::ng-deep.mat-dialog-container {
+//   //  border-radius: 13px !important; 
+//   resize: both !important; //Not working 
+//   overflow: auto;
+//   background: #fff;
+
+// }
+
+// ::ng-deep.cdk-overlay-pane{
+//     min-width: 256px;
+//     min-height: 555px;
+   
+//   }
+
+
+//// ns/ew/nsew
+
+.container {
+  position: relative;
+  background-color: gray;
+}
+
+.full {
+  width: 100%;
+  background: yellow;
+}
+
+.dragHandle {
+  position: absolute;
+  background-color: red;
+}
+
+.dragHandle.corner {
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+}
+
+.dragHandle.right {
+  width: 2px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.dragHandle.bottom {
+  height: 2px;
+  width: 100%;
+  cursor: ns-resize;
 }
