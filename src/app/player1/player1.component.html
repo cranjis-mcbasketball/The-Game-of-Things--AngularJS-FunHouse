@@ -14,87 +14,142 @@
   </div> -->
 
 
-  <div class="hwrapper" id="hwrapper1">
 
-    <div class="wrapper" id="wrapper1">
-
-      <span class="section" id="section1">
-
-        <div class="box" id="box1">
+  <!-- 
+  <div class="wrapper" id="wrapper1">
 
 
-          <div cdkDropList [cdkDropListData]="beginnings" class="choices-list" id="beginning-options"
-            (cdkDropListDropped)="drop($event)">
-            <div class="list-heading">Beginning Choices</div>
-            <div class="choices-list" id="beginning-list-item" *ngFor="let item of beginnings" cdkDrag>
-              {{ item }}
-            </div>
-          </div>
+    <div class="box" id="box1">
+
+
+      <div cdkDropList [cdkDropListData]="beginnings" class="choices-list" id="beginning-options"
+        (cdkDropListDropped)="drop($event)">
+        <div class="list-heading">Beginning Choices</div>
+        <div class="choices-list" id="beginning-list-item" *ngFor="let item of beginnings" cdkDrag>
+          {{ item }}
         </div>
-
-        <div class="handler"></div>
-        <div class="box" id="box2">
-
-          <div cdkDropList [cdkDropListData]="middles" class="choices-list" id="middle-options"
-            (cdkDropListDropped)="drop($event)">
-            <div class="list-heading">Middle Choices</div>
-            <div class="choices-list" id="middle-list-item" *ngFor="let item of middles" cdkDrag>
-              {{ item }}
-            </div>
-          </div>
-        </div>
-
-        <div class="handler"></div>
-
-        <div class="box" id="box3">
-          <div class="list-heading">Ending Choices</div>
-          <div cdkDropList [cdkDropListData]="ends" class="choices-list" id="end-options"
-            (cdkDropListDropped)="drop($event)">
-            <div class="choices-list" id="end-list-item" *ngFor="let item of ends" cdkDrag>
-              {{ item }}
-            </div>
-          </div>
-        </div>
-      </span>
+      </div>
     </div>
 
-    <div class="hhandler"></div>
-    <span class="section" id="section2">
-      <div class="list-container">
-        <h2 class="list-heading">Drag three fragments into this box to formulate a response :</h2>
+    <div class="handler" id="handler1"></div>
 
-        <div cdkDropList [cdkDropListData]="response" class="choices-list" id="response-submission"
+    <div class="wrapper" id="wrapper2">
+      <div class="box" id="box2">
+
+        <div cdkDropList [cdkDropListData]="middles" class="choices-list" id="middle-options"
           (cdkDropListDropped)="drop($event)">
-          <div class="choices-list" *ngFor="let item of response" cdkDrag>
+          <div class="list-heading">Middle Choices</div>
+          <div class="choices-list" id="middle-list-item" *ngFor="let item of middles" cdkDrag>
+            {{ item }}
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="hhandler" id="hhandler1"></div>
+
+      <div class="box" id="box3">
+        <div class="list-heading">Ending Choices</div>
+        <div cdkDropList [cdkDropListData]="ends" class="choices-list" id="end-options"
+          (cdkDropListDropped)="drop($event)">
+          <div class="choices-list" id="end-list-item" *ngFor="let item of ends" cdkDrag>
             {{ item }}
           </div>
         </div>
       </div>
 
-      <form>
-        <span class="choices-list" id="player-name">
-          <label><strong>Name: </strong> </label>
-          <span>{{ " " }}</span>
-          <input ngrxField="name" class="ui input" placeholder="Cranjis McBasketball" name="userName"
-            [(ngModel)]="userName" />
-        </span>
+    </div>
+  </div> -->
+  <div class="list-container">
+    <div #resizeBox class="container" style="position: relative;" [style.width.px]="width" [style.height.px]="height">
+      <span #dragHandleCorner [cdkDragLockAxis]="lockAxis" class="dragHandle corner" cdkDrag
+        (cdkDragMoved)="dragMove(dragHandleCorner, $event)"></span>
+      <span #dragHandleRight cdkDragLockAxis="x" class="dragHandle right" cdkDrag
+        (cdkDragMoved)="dragMove(dragHandleRight, $event)"></span>
+      <span #dragHandleBottom cdkDragLockAxis="y" class="dragHandle bottom" cdkDrag
+        (cdkDragMoved)="dragMove(dragHandleBottom, $event)"></span>
 
-        <span class="choices-list" id="things-response" placeholder="The mustard fell outta the tree"
-          name="userResponse" [(ngModel)]="userResponse">
-          <label><strong>My Response:</strong></label>
-          {{
+
+      <table>
+        <!-- <thead>
+          <tr>
+            <th class="list-heading">Beginning Choices</th>
+            <th class="list-heading">Middle Choices</th>
+            <th class="list-heading">Ending Choices</th>
+          </tr>
+        </thead> -->
+
+        <tbody>
+          <tr>
+            <td id="col1">
+              <div class="list-heading">Beginning Choices</div>
+              <div cdkDropList [cdkDropListData]="beginnings" class="choices-list" id="beginning-options"
+                (cdkDropListDropped)="drop($event)">
+                <div class="choices-list" id="beginning-list-item" *ngFor="let item of beginnings" cdkDrag>
+                  {{ item }}
+                </div>
+              </div>
+            </td>
+            <td id="col2">
+              <div class="list-heading">Middle Choices</div>
+              <div cdkDropList [cdkDropListData]="middles" class="choices-list" id="middle-options"
+                (cdkDropListDropped)="drop($event)">
+                <div class="choices-list" id="middle-list-item" *ngFor="let item of middles" cdkDrag>
+                  {{ item }}
+                </div>
+              </div>
+            </td>
+            <td id="col3">
+              <div class="list-heading">Ending Choices</div>
+              <div cdkDropList [cdkDropListData]="ends" class="choices-list" id="end-options"
+                (cdkDropListDropped)="drop($event)">
+                <div class="choices-list" id="end-list-item" *ngFor="let item of ends" cdkDrag>
+                  {{ item }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br />
+  <br />
+  <br />
+
+  <div class="list-container">
+    <h2 class="list-heading">Drag three fragments into this box to formulate a response :</h2>
+
+    <div cdkDropList [cdkDropListData]="response" class="choices-list" id="response-submission"
+      (cdkDropListDropped)="drop($event)">
+      <div class="choices-list" *ngFor="let item of response" cdkDrag>
+        {{ item }}
+      </div>
+    </div>
+  </div>
+
+  <form>
+    <span class="choices-list" id="player-name">
+      <label><strong>Name: </strong> </label>
+      <span>{{ " " }}</span>
+      <input ngrxField="name" class="ui input" placeholder="Cranjis McBasketball" name="userName"
+        [(ngModel)]="userName" />
+    </span>
+
+    <span class="choices-list" id="things-response" placeholder="The mustard fell outta the tree" name="userResponse"
+      [(ngModel)]="userResponse">
+      <label><strong>My Response:</strong></label>
+      {{
           (response[0] || " ") +
             " " +
             (response[1] || " ") +
             " " +
             (response[2] || " ")
         }}
-        </span>
-
-        <button type="submit" (click)="submissionsTab()">Submit Response!</button>
-      </form>
     </span>
 
+    <button type="submit" (click)="submissionsTab()">Submit Response!</button>
+  </form>
 
-  </div>
 </div>

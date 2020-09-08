@@ -1,10 +1,4 @@
-.list-container {
-  width: 300px;
-  max-width: 100%;
-  margin: 0 15px 15px 0;
-  display: block;
-  position: relative;
-}
+
 // .choices {
 //   background-color: #444;
 //   border-radius: 5px;
@@ -24,7 +18,8 @@
   border-radius: 4px;
   overflow: hidden;
   flex-grow: 0;
-  // display: block;
+  min-width: 20px;
+  display: block;
 }
 
 .list-heading {
@@ -82,78 +77,236 @@
 }
 
 
-.wrapper {
-  background-color: #fff;
-  color: #444;
-  /* Use flexbox */
-  display: flex;
-}
 
+//// ns/ew/nsew
 
-.box {
-  background-color: #444;
-  color: rgba(29, 22, 22, 0.788);
-  border-radius: 5px;
-  // padding: 0px;
-  font-size: 90%;
-  // flex-grow: 0;
-  
-  /* Use box-sizing so that element's outerwidth will match width property */
-  box-sizing: border-box;
-  
-  /* Allow box to grow and shrink, and ensure they are all equally sized */
-  flex: 1 1 auto;
-}
-
-.section {
-  background-color: rgb(0, 86, 121);
-  color: rgba(29, 22, 22, 0.788);
-  border-radius: 5px;
-  // padding: 0px;
-  font-size: 90%;
-  // flex-grow: 0;
-  
-  /* Use box-sizing so that element's outerwidth will match width property */
-  box-sizing: border-box;
-  
-  /* Allow box to grow and shrink, and ensure they are all equally sized */
-  flex: 1 1 auto;
-  flex-direction: row;
-}
-
-.handler {
-  width: 20px;
-  padding: 0;
-  cursor: ew-resize;
-  flex: 0 0 auto;
-}
-
-.handler::before {
-  content: '';
+.container {
+  position: relative;
+  background-color: gray;
   display: block;
-  width: 4px;
-  height: 100%;
-  background: red;
-  margin: 0 auto;
+  height: 600px;
+  width: 600px;
+  min-height: 300px;
+  min-width: 300px;
 }
 
+// .list-container {
+//   width: 300px;
+//   max-width: 100%;
+//   margin: 0 15px 15px 0;
+//   display: block;
+//   position: relative;
+// }
 
-.hhandler {
-  width: 200px;
-  height: 4px;
-  padding: 0;
-  cursor: ns-resize;
-  flex: auto auto 0;
+tr {
+  vertical-align: text-top;
 }
 
-.hhandler::before {
-  content: '';
+// .choices-list #beginning-list-item
+// #middle-list-item #end-list-item{
+//   position: relative;
+//   border: solid 1px #ccc;
+//   min-height: 20px;
+//   height: 20px;
+//   background: white;
+//   border-radius: 4px;
+//   overflow: hidden;
+//   flex-grow: 0;
+//   font-size-adjust: inherit;
+//   font-size: 14px;
+//   // display: block;
+// }
+
+#beginning-list-item{
+  position: relative;
+  border: solid 1px #ccc;
+  min-height: 20px;
+  height: 50px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-grow: 0;
+  font-size-adjust: initial;  
+  font-size: 12px;
   display: block;
-  height: 4px;
+  font-optical-sizing: auto;
+}
+
+#middle-list-item{
+  position: relative;
+  border: solid 1px #ccc;
+  min-height: 20px;
+  height: 50px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-grow: 0;
+  font-size-adjust: initial;  
+  font-size: 12px;
+  display: block;
+  font-optical-sizing: auto;
+}
+#end-list-item{
+  position: relative;
+  border: solid 1px #ccc;
+  min-height: 20px;
+  height: 50px;
+  background: white;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-grow: 0;
+  font-size-adjust: initial;  
+  font-size: 12px;
+  display: block;
+  font-optical-sizing: auto;
+}
+
+.full {
   width: 100%;
-  background: rgb(159, 9, 179);
-  margin: 0 auto;
+  background: yellow;
 }
+
+.dragHandle {
+  position: absolute;
+  background-color: red;
+}
+
+.dragHandle.corner {
+  width: 15px;
+  height: 15px;
+  cursor: nwse-resize;
+
+  transform: translate3d(441px, 541px, 0px);
+    touch-action: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.dragHandle.right {
+  width: 2px;
+  height: 100%;
+  cursor: ew-resize;
+}
+
+.dragHandle.bottom {
+  height: 2px;
+  width: 100%;
+  cursor: ns-resize;
+}
+
+
+////// horizontal adjusting only
+
+
+// .wrapper {
+//   background-color: #fff;
+//   color: #444;
+//   /* Use flexbox */
+//   display: flex;
+// }
+
+// .hwrapper {
+//   background-color: #fff;
+//   color: #444;
+//   /* Use flexbox */
+//   display: flex;
+// }
+
+
+// .box #box1 {
+//   background-color: #444;
+//   color: rgba(29, 22, 22, 0.788);
+//   border-radius: 5px;
+//   // padding: 0px;
+//   font-size: 90%;
+//   // flex-grow: 0;
+  
+//   /* Use box-sizing so that element's outerwidth will match width property */
+//   box-sizing: border-box;
+  
+//   /* Allow box to grow and shrink, and ensure they are all equally sized */
+//   flex: 1 1 auto;
+// }
+// .box #box2{
+//   background-color: #444;
+//   color: rgba(29, 22, 22, 0.788);
+//   border-radius: 5px;
+//   // padding: 0px;
+//   font-size: 90%;
+//   // flex-grow: 0;
+  
+//   /* Use box-sizing so that element's outerwidth will match width property */
+//   box-sizing: border-box;
+  
+//   /* Allow box to grow and shrink, and ensure they are all equally sized */
+//   flex: 1 1 auto;
+// }
+// .box #box3{
+//   background-color: #444;
+//   color: rgba(29, 22, 22, 0.788);
+//   border-radius: 5px;
+//   // padding: 0px;
+//   font-size: 90%;
+//   // flex-grow: 0;
+  
+//   /* Use box-sizing so that element's outerwidth will match width property */
+//   box-sizing: border-box;
+  
+//   /* Allow box to grow and shrink, and ensure they are all equally sized */
+//   flex: 1 1 auto;
+// }
+
+// .section {
+//   background-color: rgb(0, 86, 121);
+//   color: rgba(29, 22, 22, 0.788);
+//   border-radius: 5px;
+//   // padding: 0px;
+//   font-size: 90%;
+//   // flex-grow: 0;
+  
+//   /* Use box-sizing so that element's outerwidth will match width property */
+//   box-sizing: border-box;
+  
+//   /* Allow box to grow and shrink, and ensure they are all equally sized */
+//   flex: 1 1 auto;
+//   flex-direction: row;
+// }
+
+// .handler {
+//   width: 20px;
+//   padding: 0;
+//   cursor: ew-resize;
+//   flex: 0 0 auto;
+// }
+
+// .handler::before {
+//   content: '';
+//   display: block;
+//   width: 4px;
+//   height: 100%;
+//   background: red;
+//   margin: 0 auto;
+// }
+
+
+// .hhandler {
+//   width: 20px;
+//   padding: 0;
+//   cursor: ew-resize;
+//   flex: 0 0 auto;
+// }
+
+// .hhandler::before {
+//   content: '';
+//   display: block;
+//   width: 4px;
+//   height: 100%;
+//   background: rgb(2, 90, 24);
+//   margin: 0 auto;
+// }
+
+
 
 
 /////@at-root
@@ -171,39 +324,3 @@
 //     min-height: 555px;
    
 //   }
-
-
-//// ns/ew/nsew
-
-.container {
-  position: relative;
-  background-color: gray;
-}
-
-.full {
-  width: 100%;
-  background: yellow;
-}
-
-.dragHandle {
-  position: absolute;
-  background-color: red;
-}
-
-.dragHandle.corner {
-  width: 15px;
-  height: 15px;
-  cursor: nwse-resize;
-}
-
-.dragHandle.right {
-  width: 2px;
-  height: 100%;
-  cursor: ew-resize;
-}
-
-.dragHandle.bottom {
-  height: 2px;
-  width: 100%;
-  cursor: ns-resize;
-}

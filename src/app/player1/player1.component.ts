@@ -43,6 +43,27 @@ export interface Fragments {
 })
 export class Player1Component implements OnInit {
 
+  @ViewChild('resizeBox') resizeBox: ElementRef;
+  @ViewChild('dragHandleCorner') dragHandleCorner: ElementRef;
+  @ViewChild('dragHandleRight') dragHandleRight: ElementRef;
+  @ViewChild('dragHandleBottom') dragHandleBottom: ElementRef;
+
+  get resizeBoxElement(): HTMLElement {
+    return this.resizeBox.nativeElement;
+  }
+
+
+  get dragHandleCornerElement(): HTMLElement {
+    return this.dragHandleCorner.nativeElement;
+  }
+
+  get dragHandleRightElement(): HTMLElement {
+    return this.dragHandleRight.nativeElement;
+  }
+
+  get dragHandleBottomElement(): HTMLElement {
+    return this.dragHandleBottom.nativeElement;
+  }
 
   fragmentsData: Fragments[];
 
@@ -132,97 +153,173 @@ export class Player1Component implements OnInit {
 
 
   ngAfterViewInit() {
-    var handler = document.querySelector(".handler");
-    var hhandler = document.querySelector(".hhandler");
-    var wrapper = handler.closest(".wrapper");
-    var hwrapper = hhandler.closest(".wrapper");
-    // var wrapper = document.getElementsByClassName("wrapper");
-    // var wrapper = document.getElementById("wrapper1");
-    var box = wrapper.querySelector(".box");
-    var section = wrapper.querySelector(".section");
-    // var boxBeginnings = wrapper.querySelector("#beginning-options");
-    // var boxMiddles = wrapper.querySelector("#middle-options");
-    // var boxEndings = wrapper.querySelector("#end-options");
-    var isHandlerDragging = false;
-    var isHHandlerDragging = false;
-
-    document.addEventListener("mousedown", function (e) {
-
-      // If mousedown event is fired from .handler, toggle flag to true
-      if (e.target === handler) {
-        console.log("mousedown e.target:", e.target)
-        isHandlerDragging = true;
-      } else if (e.target === hhandler) {
-        console.log("mousedown e.target:", e.target)
-        isHHandlerDragging = true;
-      }
-    });
-
-    document.addEventListener("mousemove", function (e) {
-
-
-      if (!isHandlerDragging && !isHHandlerDragging) {
-        return false;
-      }
-      console.log("mousemove e.target:", e.target)
-
-      if (isHandlerDragging) {
-        var containerOffsetLeft = wrapper.offsetLeft;
-        var pointerRelativeXpos = e.clientX - containerOffsetLeft;
-        var boxminWidth = 60;
-        box.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
-      }
-
-
-      if (isHHandlerDragging) {
-        var containerOffsetTop = hwrapper.offsetTop;
-
-
-        var pointerRelativeYpos = e.clientY - containerOffsetTop;
-
-
-        var sectionMinHeight = 50;
-
-
-        section.style.height = Math.max(sectionMinHeight, pointerRelativeYpos - 8) + "px";
-
-      }
-
-
-      // box.style.flexGrow = 0;
-      // section.style.flexGrow = 0;
-
-
-
-      // Resize box A
-      // * 8px is the left/right spacing between .handler and its inner pseudo-element
-      // * Set flex-grow to 0 to prevent it from growing
-      // var el = document.getElementById("box1")
-      // el.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
-
-      // var el = document.getElementById("box1")
-      // el.style.width = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
-
-      // el.style.flex-grow = 0;
-
-      // var boxWidth = Math.max(boxminWidth, pointerRelativeXpos - 8) + "px";
-      // var boxFlexGrow = 0;
-
-
-
-    });
-
-
-
-
-    document.addEventListener("mouseup", function (e) {
-      console.log("mouseup e.target:", e.target)
-      isHandlerDragging = false;
-      isHHandlerDragging = false;
-
-    });
-
+    this.setAllHandleTransform();
   }
+
+  setAllHandleTransform() {
+    const rect = this.resizeBoxElement.getBoundingClientRect();
+    this.setHandleTransform(this.dragHandleCornerElement, rect, 'both');
+    this.setHandleTransform(this.dragHandleRightElement, rect, 'x');
+    this.setHandleTransform(this.dragHandleBottomElement, rect, 'y');
+  }
+
+  setHandleTransform(
+    dragHandle: HTMLElement,
+    targetRect: ClientRect | DOMRect,
+    position: 'x' | 'y' | 'both'
+  ) {
+    const dragRect = dragHandle.getBoundingClientRect();
+    const translateX = targetRect.width - dragRect.width;
+    const translateY = targetRect.height - dragRect.height;
+
+    if (position === 'x') {
+      dragHandle.style.transform = `translate3d(${translateX}px, 0, 0)`;
+    }
+
+    if (position === 'y') {
+      dragHandle.style.transform = `translate3d(0, ${translateY}px, 0)`;
+    }
+
+    if (position === 'both') {
+      dragHandle.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
+    }
+  }
+
+  dragMove(dragHandle: HTMLElement, $event: CdkDragMove<any>) {
+    this.ngZone.runOutsideAngular(() => {
+      this.resize(dragHandle, this.resizeBoxElement);
+    });
+  }
+
+  resize(dragHandle: HTMLElement, target: HTMLElement) {
+    const dragRect = dragHandle.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+
+    const width = dragRect.left - targetRect.left + dragRect.width;
+    const height = dragRect.top - targetRect.top + dragRect.height;
+
+    target.style.width = width + 'px';
+    target.style.height = height + 'px';
+
+    var choicesList = document.getElementsByClassName("choices-list");
+    console.log('choicesList', choicesList)
+
+    var col1 = document.getElementById("col1");
+    var col2 = document.getElementById("col2");
+    var col3 = document.getElementById("col3");
+
+    var items1 = document.getElementById("beginning-list-item");
+    var items2 = document.getElementById("middle-list-item");
+    var items3 = document.getElementById("end-list-item");
+
+    var bg = document.getElementById("beginning-options").children;
+    var md = document.getElementById("middle-options").children;
+    var en = document.getElementById("end-options").children;
+
+
+    // col1.style.width = width / 3 + "px";
+    // col2.style.width = width / 3 + "px";
+    // col3.style.width = width / 3 + "px";
+
+    // bg.style.width = width / 3 + "px";
+    // bg.style.height = height + "px";
+
+    for (var i = 0; i < bg.length; i++) {
+      // bg[i].width = width / 3 + "px";
+      // md[i].style.width = width / 3 + "px";
+      // en[i].style.width = width / 3 + "px";
+
+      bg[i].style.height = height / 8 + "px";
+      md[i].style.height = height / 8 + "px";
+      en[i].style.height = height / 8 + "px";
+
+    }
+    // col1.style.height = height + "px";
+    // col2.style.height = height + "px";
+    // col3.style.height = height + "px";
+    // items1.style.height = height / 9 + "px";
+    // items2.style.height = height / 9 + "px";
+    // items3.style.height = height / 9 + "px";
+
+    // for (var i = 0; i < choicesList.length; i++) {
+    //   console.log('choicesList[i]', choicesList[i])
+    //   choicesList[i].style.height = height / 9 + "px";
+    // }
+
+    this.setAllHandleTransform();
+  }
+
+
+
+  // ngAfterViewInit() {
+  //   var handler = document.querySelector(".handler");
+  //   var hhandler = document.querySelector(".hhandler");
+  //   var wrapper = handler.closest(".wrapper");
+  //   var hwrapper = hhandler.closest(".wrapper");
+  //   // var wrapper = document.getElementsByClassName("wrapper");
+  //   // var wrapper = document.getElementById("wrapper1");
+  //   var boxChoices = wrapper.querySelector(".box");
+  //   // var boxBeginnings = wrapper.querySelector("#beginning-options");
+  //   // var boxMiddles = wrapper.querySelector("#middle-options");
+  //   // var boxEndings = wrapper.querySelector("#end-options");
+  //   var isHandlerDragging = false;
+  //   var isHHandlerDragging = false;
+
+  //   document.addEventListener("mousedown", function (e) {
+
+  //     // If mousedown event is fired from .handler, toggle flag to true
+  //     if (e.target === handler) {
+  //       console.log("mousedown e.target:", e.target)
+  //       isHandlerDragging = true;
+  //     } else if (e.target === hhandler) {
+  //       console.log("mousedown e.target:", e.target)
+  //       isHHandlerDragging = true;
+  //     }
+  //   });
+
+  //   document.addEventListener("mousemove", function (e) {
+
+
+  //     if (!isHandlerDragging && !isHHandlerDragging) {
+  //       return false;
+  //     }
+  //     console.log("mousemove e.target:", e.target)
+
+  //     if (isHandlerDragging) {
+  //       console.log('wrapper', wrapper)
+  //       console.log(' wrapper.offsetLeft', wrapper.offsetLeft)
+  //       var containerOffsetLeft = wrapper.offsetLeft;
+  //       var pointerRelativeXpos = e.clientX - containerOffsetLeft;
+  //       var boxChoicesminWidth = 60;
+  //       boxChoices.style.width = Math.max(boxChoicesminWidth, pointerRelativeXpos - 8) + "px";
+  //     }
+
+
+  //     if (isHHandlerDragging) {
+  //       console.log('hwrapper', hwrapper)
+  //       console.log(' hwrapper.offsetLeft', hwrapper.offsetLeft)
+  //       var hcontainerOffsetLeft = hwrapper.offsetLeft;
+  //       var hpointerRelativeXpos = e.clientX - hcontainerOffsetLeft;
+  //       var hboxChoicesminWidth = 60;
+  //       boxChoices.style.width = Math.max(hboxChoicesminWidth, hpointerRelativeXpos - 8) + "px";
+  //     }
+
+
+  //     boxChoices.style.flexGrow = 0;
+
+  //   });
+
+
+
+
+  //   document.addEventListener("mouseup", function (e) {
+  //     console.log("mouseup e.target:", e.target)
+  //     isHandlerDragging = false;
+  //     isHHandlerDragging = false;
+
+  //   });
+
+  // }
 
   submissionsTab() {
     console.log('this.SubmissionsList', this.SubmissionsList)
