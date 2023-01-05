@@ -52,12 +52,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cranjis-mcbasketball/The.Game.Of.Things--An-Angular-NgRx-FunHouse.git"
+    "url": "git+https://github.com/mason-u-borchard/The.Game.Of.Things--An-Angular-NgRx-FunHouse.git"
   },
   "author": "Mason Borchard",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cranjis-mcbasketball/The.Game.Of.Things--An-Angular-NgRx-FunHouse/issues"
+    "url": "https://github.com/mason-u-borchard/The.Game.Of.Things--An-Angular-NgRx-FunHouse/issues"
   },
-  "homepage": "https://github.com/cranjis-mcbasketball/The.Game.Of.Things--An-Angular-NgRx-FunHouse#readme"
+  "homepage": "https://github.com/mason-u-borchard/The.Game.Of.Things--An-Angular-NgRx-FunHouse#readme"
 }
